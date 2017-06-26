@@ -11,7 +11,7 @@ body {
   display: grid;
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
-  grid-template-columns: [oe-start] 1fr [oe-end tl-start] 4px [tl-end ee-start] 1fr [ee-end]
+  grid-template-columns: [oe-start] 1fr [oe-end tl-start] 4px [tl-end ee-start] 1fr [ee-end];
 }         /* key:        'oe'='odd-numbered entry'............'tl'='timeline'.......'ee'='even-numbered entry' */
 
 /*@media screen and (min-width: 750px) {
@@ -24,14 +24,15 @@ body {
 
 .header {
   grid-column: 1 / -1;
+  grid-row: 1;
 }
 
 .entry {
-  grid-column: entry-start;
+  grid-column: oe-start;
 }
 
 .entry:nth-of-type(even) {
-  grid-column: entry-start 2 / entry-end 2;
+  grid-column: ee-start / ee-end;
 }
 
 .container .entry, .container .header {
@@ -49,4 +50,5 @@ body {
 .timeline {
   grid-column: 2;
   grid-row: 2 / 9;
+  border: 2px solid red;
 }
