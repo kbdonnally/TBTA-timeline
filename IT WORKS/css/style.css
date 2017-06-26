@@ -27,9 +27,6 @@ body {
   grid-column: 1 / -1;
   grid-row: 1;
 }
-.footer {
-  grid-column: 1 / -1;
-}
 
 .entry-o {
   grid-column: oe-start;
@@ -47,7 +44,7 @@ body {
   border: 2px solid purple;
 }
 
-.entry-o, .entry-e, .footer, .header {
+.entry-o, .entry-e, .container .header {
   background-color: mistyrose;
   color: darkgrey;
   border: 2px solid pink;
@@ -59,35 +56,19 @@ body {
 
 /* ------------------------------------------------------------ */
 
-.tl-wrapper {
+.timeline {
   grid-column: 2;
   justify-self: center;
+  border: 2px solid red;
+  background-color: lightblue;
 }
+
 .icon {
-  transform: translate(-50%, -50%);
-  margin-top: 40px;
-  margin-left: 2px; /* compensate for centering timeline itself - is inside the div */
-  height: 3rem;
-  width: 3rem;
-  border-radius: 50%;
-  background-color: rgba(112, 0, 112, .8);
-  opacity: .8;
-  z-index: 10;
-}
-.icon img {
-  height: 2.5rem;
-  width: 2.5rem;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.timeline {
   width: 4px;
-  transform: translate(-2px, 0);
-  height: 110%;
   background-color: purple;
-  margin-top: 0;
-  margin-bottom: -10px; /* change margins for 1st and last of type */
-  z-index: -10;
+  grid-column: 2;
+  justify-self: center;
+  align-self: stretch;
+  margin-top: -10px;
+  margin-bottom: -10px;
 }
