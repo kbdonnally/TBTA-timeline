@@ -10,8 +10,9 @@ body {
 .container {
   display: grid;
   grid-gap: 10px;
+  grid-auto-flow: row dense;
   grid-auto-rows: minmax(100px, auto);
-  grid-template-columns: [oe-start ed-start] 1fr [oe-end ed-end tl-start] 4px [tl-end ee-start od-start] 1fr [ee-end od-end];
+  grid-template-columns: [oe-start ed-start] 1fr [oe-end ed-end tl-start] 40px [tl-end ee-start od-start] 1fr [ee-end od-end];
 }         /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date' */
 
 /*
@@ -27,23 +28,23 @@ body {
   grid-row: 1;
 }
 
-.entry {
+.entry-o {
   grid-column: oe-start;
 }
-.entry:nth-of-type(even) {
+.entry-e {
   grid-column: ee-start;
 }
 
-.date {
+.date-o {
   grid-column: od-start;
   border: 2px solid purple;
 }
-.date:nth-of-type(even) {
+.date-e {
   grid-column: ed-start;
   border: 2px solid purple;
 }
 
-.container .entry, .container .header {
+.entry-o, .entry-e, .container .header {
   background-color: mistyrose;
   color: darkgrey;
   border: 2px solid pink;
