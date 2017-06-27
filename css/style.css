@@ -1,93 +1,227 @@
 /* thru container setup = good generic grid */
 body {
   font-size: 100%;
+  font-family: 'Raleway', sans-serif;
+  background-image: linear-gradient(to right, #6f256f -10%, rgba(255, 255, 255, 0), #6f256f 110%), url(../img/paper.jpg);
+  background-attachment: fixed, fixed;
 }
 
 * {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+h3 {
+  font-weight: normal;
+}
+p {
+  font-size: 1rem;
+}
+
+/* ----- grid setup: -------------------------------------- */
+
+/* insert small screen setup - 2 rows, tl on left */
+/* @media all and (min-width: 750px) { } */
+
 .container {
+  /* issue: when resized, scroll bar appears...? */
+  margin: auto 5vw;
   display: grid;
   grid-gap: 10px;
   grid-auto-flow: row dense;
-  grid-auto-rows: minmax(100px, auto);
+  grid-auto-rows: minmax(10px, auto);
   grid-template-columns: [oe-start ed-start] 1fr [oe-end ed-end tl-start] 100px [tl-end ee-start od-start] 1fr [ee-end od-end];
-}         /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date' */
-
-/*
-@media screen and (min-width: 750px) {
-  .container {
-    grid-template-columns: move ^^ here, small = 2 col;
-  }
+  /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date' */
+  background-image:
 }
-*/
+
+
+/* ----- grid item placement: ----------------------------- */
 
 .header {
   grid-column: 1 / -1;
   grid-row: 1;
 }
-.footer {
-  grid-column: 1 / -1;
-}
 
-.entry-o {
+.entry.odd {
   grid-column: oe-start;
 }
-.entry-e {
+.entry.even {
   grid-column: ee-start;
 }
 
-.date-o {
-  grid-column: od-start;
-  border: 2px solid purple;
-}
-.date-e {
-  grid-column: ed-start;
-  border: 2px solid purple;
-}
-
-.entry-o, .entry-e, .footer, .header {
-  background-color: mistyrose;
-  color: darkgrey;
-  border: 2px solid pink;
-  border-radius: 3px;
-  text-align: center;
-  font-family: "Garamond", serif;
-  font-size: 1.5rem;
-}
-
-/* ------------------------------------------------------------ */
-
 .tl-wrapper {
-  grid-column: 2;
+  grid-column: 2; /* 1 for small screens */
   justify-self: center;
+} /* holds timeline/icons */
+
+
+
+
+
+/* --------------------- visual styling: ------------------------ */
+
+/* Table of Contents:   (1).........header            (insert line numbers soon)
+                        (2)....line itself
+                        (3)...........icon
+                        (4)........entries
+                        (5)...........date
+                        (6).........footer                                    */
+
+/* 1. header */
+.header {
+  text-align: center;
+  order: -1;
+  margin-bottom: 3em;
 }
-.icon {
-  transform: translate(-50%, -50%);
-  margin-top: 40px;
-  margin-left: 2px; /* compensate for centering timeline itself - is inside the div */
-  height: 3rem;
-  width: 3rem;
+
+/* 2. line */
+.dots {
+  grid-column: 1 / -1;
+  justify-self: center;
+  height: 4px;
+  width: 4px;
   border-radius: 50%;
-  background-color: rgba(112, 0, 112, .8);
-  opacity: .8;
-  z-index: 10;
+  transform: translate(-2px, 0);
+  background-color: purple;
 }
-.icon img {
-  height: 2.5rem;
-  width: 2.5rem;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+p[class="dots"]:nth-of-type(1) {
+  opacity: .5;
 }
+p[class="dots"]:nth-of-type(2) {
+  opacity: .7;
+}
+p[class="dots"]:nth-of-type(3) {
+  opacity: .9;
+}
+
 .timeline {
   width: 4px;
   transform: translate(-2px, 0);
   height: 110%;
-  background-color: purple;
+  background-color: #6f256f;
   margin-top: 0;
   margin-bottom: -10px; /* change margins for 1st and last of type */
   z-index: -10;
+}
+.container div:nth-of-type(2) {
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  margin-top: -30px;
+} /* ^hacky fix. Consult StackOverflow solution: .parent > .class ~ .class {}, is in bookmarks  */
+.container div:nth-last-of-type(4) {
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+} /* hacky fix that requires numbers */
+
+
+
+/* 3. icon */
+.icon {
+  transform: translate(-50%, 0);
+  margin-left: 2px; /* compensate for centering timeline itself - is inside the div */
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid #6f256f;
+  z-index: 10;
+} /* circle */
+
+.icon img {
+  height: 1.75rem;
+  width: 1.75rem;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} /* pic */
+
+/* ------- 4. entry blocks ----------- */
+
+.entry {
+  position: relative;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 1);
+  text-align: left;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+}
+
+.entry::before { /* arrow */
+  content: '';
+  position: absolute;
+  top: 1rem;
+  right: 100%;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-right: 7px solid white;
+}
+@media only screen and (min-width: 900px) {
+  .entry.odd::before { /* odd arrow */
+    top: 1rem;
+    left: 100%;
+    border-color: transparent;
+    border-left-color: white;
+  }
+}
+.entry h1, .entry h2, .entry h3 {
+  margin: 0;
+}
+
+.entry h2 { /* entry title */
+  color: #292956;
+  font-size: 1.5rem;
+}
+.entry h3 { /* entry subtitle */
+  color: #292956;
+  font-size: 1rem;
+  font-family: 'Roboto Slab', serif;
+}
+
+.entry p {
+  margin: 1em 0;
+  line-height: 1.6;
+}
+
+/*---------------------- 5. date ------------------------- */
+
+.date.odd {
+  grid-column: od-start;
+  margin-left: 0vw;
+}
+.date.even {
+  grid-column: ed-start;
+  text-align: right;
+}
+.date {
+  font-size: 1.5rem;
+  height: 3rem;
+  line-height: 3rem;
+  width: auto;
+}
+
+
+/* 6. footer */
+.gap {
+  order: 1;
+  grid-column: 1, -1;
+  height: 5rem;
+}
+.footer {
+  grid-column: 1 / -1;
+}
+.footer {
+  text-align: center;
+  grid-column: 1, -1;
+  order: 2;
 }
