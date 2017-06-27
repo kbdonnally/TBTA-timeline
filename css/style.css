@@ -4,6 +4,12 @@ body {
   font-family: 'Raleway', sans-serif;
   background-image: linear-gradient(to right, #6f256f -10%, rgba(255, 255, 255, 0), #6f256f 110%), url(../img/paper.jpg);
   background-attachment: fixed, fixed;
+  margin: 0;
+}
+@media screen and (max-width: 750px) {
+  body {
+    background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);
+  }
 }
 
 * {
@@ -24,6 +30,20 @@ h3 {
 p {
   font-size: 1rem;
 }
+
+/* ----- intro work: -------------------------------------- */
+
+/*@media only screen and (min-width: 1024px) { } */
+header {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg);
+}
+header h1 {
+  font-size: 5rem;
+  margin: 0;
+}
+
 
 /* ----- grid setup: -------------------------------------- */
 
@@ -206,7 +226,6 @@ p[class="dots"]:nth-of-type(3) {
   border-radius: 3px;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
 }
-
 .entry::before { /* arrow */
   content: '';
   position: absolute;
@@ -227,10 +246,11 @@ p[class="dots"]:nth-of-type(3) {
   }
 }
 
+/* ------ 4b. text -------------- */
+
 .entry h1, .entry h2, .entry h3 {
   margin: 0;
 }
-
 /* change sizes for lil screens!!! */
 .entry h2 { /* entry title */
   color: #292956;
@@ -241,13 +261,13 @@ p[class="dots"]:nth-of-type(3) {
   font-size: 1rem;
   font-family: 'Roboto Slab', serif;
 }
-
 .entry p {
   margin: 1em 0;
   line-height: 1.6; /* make 1 or 1.15 for lil screens */
 }
 
 /*---------------------- 5. date ------------------------- */
+
 .date {
   visibility: hidden;
 }
@@ -261,6 +281,7 @@ p[class="dots"]:nth-of-type(3) {
     width: auto;
   }
 }
+
 @media only screen and (min-width: 1024px) {
   .date {
     height: 4rem;
@@ -268,8 +289,7 @@ p[class="dots"]:nth-of-type(3) {
   }
 }
 
-
-/* 6. footer */
+/* ----------------- 6. footer ------------------- */
 
 p[class="dots"]:nth-last-of-type(1) {
   opacity: .5;
