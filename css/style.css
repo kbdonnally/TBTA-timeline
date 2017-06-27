@@ -27,41 +27,73 @@ p {
 
 /* ----- grid setup: -------------------------------------- */
 
-/* insert small screen setup - 2 rows, tl on left */
-/* @media all and (min-width: 750px) { } */
-
 .container {
-  /* issue: when resized, scroll bar appears...? */
-  margin: auto 5vw;
+  margin: auto 2.5vw;
   display: grid;
   grid-gap: 10px;
-  grid-auto-flow: row dense;
+  grid-auto-flow: row;
   grid-auto-rows: minmax(10px, auto);
-  grid-template-columns: [oe-start ed-start] 1fr [oe-end ed-end tl-start] 100px [tl-end ee-start od-start] 1fr [ee-end od-end];
-  /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date' */
-  background-image:
+  grid-template-columns: [col1-start] 12.5vw [col1-end col2-start] 1fr [col2-end];
 }
-
-
-/* ----- grid item placement: ----------------------------- */
-
 .header {
   grid-column: 1 / -1;
   grid-row: 1;
 }
 
-.entry.odd {
-  grid-column: oe-start;
-}
-.entry.even {
-  grid-column: ee-start;
+.entry {
+  grid-column: col2-start;
 }
 
 .tl-wrapper {
-  grid-column: 2; /* 1 for small screens */
+  grid-column: col1-start;
   justify-self: center;
 } /* holds timeline/icons */
+.date {
+  grid-column: col1-start;
+}
+@media all and (min-width: 750px) {
+  .container {
+    /* issue: when resized, scroll bar appears...? */
+    margin: auto 2.5vw;
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-flow: row dense;
+    grid-auto-rows: minmax(10px, auto);
+    grid-template-columns: [oe-start ed-start] 1fr [oe-end ed-end tl-start] 12.5vw [tl-end ee-start od-start] 1fr [ee-end od-end];
+    /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date' */
+  }
+}
 
+
+
+
+/* ----- grid item placement: ----------------------------- */
+
+@media screen and (min-width: 750px) {
+  .header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .entry.odd {
+    grid-column: oe-start;
+  }
+  .entry.even {
+    grid-column: ee-start;
+  }
+
+  .tl-wrapper {
+    grid-column: 2; /* 1 for small screens */
+    justify-self: center;
+  } /* holds timeline/icons */
+  .date.odd {
+    grid-column: od-start;
+  }
+  .date.even {
+    grid-column: ed-start;
+    text-align: right;
+  }
+}
 
 
 
@@ -84,13 +116,24 @@ p {
 
 /* 2. line */
 .dots {
-  grid-column: 1 / -1;
+  grid-column: col1-start;
   justify-self: center;
   height: 4px;
   width: 4px;
   border-radius: 50%;
   transform: translate(-2px, 0);
   background-color: purple;
+}
+@media screen and (min-width: 750px) {
+  .dots {
+    grid-column: 1 / -1;
+    justify-self: center;
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    transform: translate(-2px, 0);
+    background-color: purple;
+  }
 }
 
 p[class="dots"]:nth-of-type(1) {
@@ -106,7 +149,7 @@ p[class="dots"]:nth-of-type(3) {
 .timeline {
   width: 4px;
   transform: translate(-2px, 0);
-  height: 110%;
+  height: 120%;
   background-color: #6f256f;
   margin-top: 0;
   margin-bottom: -10px; /* change margins for 1st and last of type */
@@ -125,7 +168,7 @@ p[class="dots"]:nth-of-type(3) {
 
 
 /* 3. icon */
-.icon {
+.icon { /* circle */
   transform: translate(-50%, 0);
   margin-left: 2px; /* compensate for centering timeline itself - is inside the div */
   height: 3rem;
@@ -134,16 +177,25 @@ p[class="dots"]:nth-of-type(3) {
   background-color: white;
   border: 3px solid #6f256f;
   z-index: 10;
-} /* circle */
-
-.icon img {
-  height: 1.75rem;
-  width: 1.75rem;
+}
+.icon img { /* pic */
+  height: 1.5rem;
+  width: 1.5rem;
   position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-} /* pic */
+}
+@media only screen and (min-width: 1024px) { /* full-size screen */
+  .icon {
+    height: 4rem;
+    width: 4rem;
+  }
+  .icon img {
+    height: 2rem;
+    width: 2rem;
+  }
+}
 
 /* ------- 4. entry blocks ----------- */
 
@@ -159,21 +211,23 @@ p[class="dots"]:nth-of-type(3) {
 .entry::before { /* arrow */
   content: '';
   position: absolute;
-  top: 1rem;
+  top: 1.5rem;
   right: 100%;
   height: 0;
   width: 0;
   border: 7px solid transparent;
   border-right: 7px solid white;
 }
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1024px) {
   .entry.odd::before { /* odd arrow */
-    top: 1rem;
+    top: 2rem;
     left: 100%;
+    transform: translate(0, -50%);
     border-color: transparent;
     border-left-color: white;
   }
 }
+
 .entry h1, .entry h2, .entry h3 {
   margin: 0;
 }
@@ -195,28 +249,23 @@ p[class="dots"]:nth-of-type(3) {
 
 /*---------------------- 5. date ------------------------- */
 
-.date.odd {
-  grid-column: od-start;
-  margin-left: 0vw;
-}
-.date.even {
-  grid-column: ed-start;
-  text-align: right;
-}
+
 .date {
-  font-size: 1.5rem;
+  font-size: 1rem;
   height: 3rem;
-  line-height: 3rem;
+  line-height: 3rem; /* same as icon height */
   width: auto;
+}
+@media only screen and (min-width: 1024px) {
+  .date {
+    height: 4rem;
+    line-height: 4rem;
+  }
 }
 
 
 /* 6. footer */
-.gap {
-  order: 1;
-  grid-column: 1, -1;
-  height: 5rem;
-}
+
 p[class="dots"]:nth-last-of-type(1) {
   opacity: .5;
 }
