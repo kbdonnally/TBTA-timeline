@@ -33,7 +33,8 @@ p {
 
 /* ----- intro work: -------------------------------------- */
 
-/*@media only screen and (min-width: 1024px) { } */
+
+/* splash page */
 header {
   width: 100%;
   height: 100vh;
@@ -44,6 +45,23 @@ header h1 {
   margin: 0;
 }
 
+.splash {
+  grid-template-areas: "....... admin admin arrows1"
+                       "arrows2 response response ."
+                       "circle1 circle2 circle3";
+
+}
+/* explainer */
+.explainer {
+  grid-template-areas: "hook     hook      hook"
+                       "reason1 reason2 reason3"
+                       "circle1 circle2 circle3";
+
+}
+.hook {
+  grid-area: hook;
+
+}
 
 /* ----- grid setup: -------------------------------------- */
 
