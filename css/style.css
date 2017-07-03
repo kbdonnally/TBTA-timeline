@@ -33,12 +33,78 @@ p {
 
 /* ----- intro work: -------------------------------------- */
 
+/* fixed menu - want animation so that it slides out if you scroll up, otherwise hidden once begin scrolling */
+/* gradient: from top, do white opaque to 0 to opaque to 0 again - want the very top to be white, not purple */
+
+menu {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding: 0 4px;
+  width: 100%;
+  height: 7.5vh; /* resizing messes up the borders - do in rem instead */
+  min-height: 2.25rem;
+  /* background-image: linear-gradient(rgba(41, 41, 86, 1), rgba(41, 41, 86, 1)), url(../img/repeating-news.jpg); */
+  background-color: rgba(255, 255, 255, .8);
+  border-bottom: .5px solid white;
+  z-index: 20;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+}
+
+#logo {
+  color: #292956;
+  display: inline-block;
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.item, .circle {
+  text-decoration: none;
+  height: 2.25rem;
+  width: 6rem;
+  margin: 0 5px;
+  padding: 4px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: bold;
+  text-align: center;
+  color: #292956;
+  border: 2px #292956 solid;
+  text-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+}
+.item:hover {
+    /* background-image: linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg); */
+    color: white;
+    background-color: #292956;
+    border: 2px /* rgba(255, 255, 255, .8) */ solid white;
+}
+.circle-container {
+  margin-left: auto;
+}
+
+.circle {
+  display: inline-block;
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 50%;
+  margin: 2px 4px;
+  padding: 4px;
+  text-align: center;
+  background-color: white;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+
 
 /* splash page */
 header {
   width: 100%;
-  height: 100vh;
-  background-image: linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg);
+  height: 150vh;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%), linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg);
 }
 header h1 {
   font-size: 5rem;
@@ -49,24 +115,65 @@ header h1 {
   text-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
 }
 
+
 .splash {
   grid-template-areas: "....... admin admin arrows1"
                        "arrows2 response response ."
-                       "circle1 circle2 circle3";
-
+                       "....  ....  ....  arrowdown";
 }
-/* explainer */
+
+/* explainer - full-size screen; handle mobile (vertical) later */
 .explainer {
+  display: grid;
   grid-template-areas: "hook     hook      hook"
                        "reason1 reason2 reason3"
                        "circle1 circle2 circle3";
-
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: center;
+  padding: 2.5vh 0;
+  height: 100vh;
+  background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
 }
 .hook {
   grid-area: hook;
-
+  border: 3px olive solid;
+  height: 25vh;
+  margin: 10vh 0;
 }
-
+.reason1, .reason2, .reason3 {
+  height: 15vh;
+}
+.reason1 {
+  grid-area: reason1;
+  border: 3px lightgreen solid;
+}
+.reason2 {
+  grid-area: reason2;
+  background-color: lightgreen;
+  opacity: .7;
+}
+.reason3 {
+  grid-area: reason3;
+  border: 3px lightgreen solid;
+}
+.circle1, .circle2, .circle3 {
+  background-color: olive;
+  width: 35vh;
+  height: 35vh;
+  padding: 5vh 0;
+  margin: 5vh 0;
+  border-radius: 50%;
+  transform: translate(50%, 0);
+}
+.circle1 {
+  grid-area: circle1;
+}
+.circle2 {
+  grid-area: circle2;
+}
+.circle3 {
+  grid-area: circle3;
+}
 /* ----- grid setup: -------------------------------------- */
 
 .container {
@@ -93,7 +200,7 @@ header h1 {
 .date {
   grid-column: col1-start;
 }
-@media all and (min-width: 750px) {
+@media all and (min-width: 900px) {
   .container {
     /* issue: when resized, scroll bar appears...? */
     margin: auto 2.5vw;
@@ -294,7 +401,7 @@ p[class="dots"]:nth-of-type(3) {
   visibility: hidden;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 900px) {
   .date {
     visibility: visible;
     font-size: 1rem;
