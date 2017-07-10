@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
     height: 100%;
 }
@@ -6,31 +10,31 @@ body {
     height: 100%;
     overflow: hidden;  /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
     margin: 0px;  /*removes default style*/
-    display: flex;  /*enables flex content for its children*/
     box-sizing: border-box;
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: 1fr 10rem;
+    grid-template-rows: 3rem 1fr;
+    grid-template-areas: "topnav topnav"
+                         "main sidebar";
+
 }
 
-.column {
-    height: 100%;  /*allows both columns to span the full height of the browser window*/
-    display: flex;
-    flex-direction: column;  /*places the left and right headers above the bottom content*/
+.topnav {
+  grid-area: topnav;
 }
 
-#left {
-    flex-shrink: 0;  /*makes sure that content is not cut off in a smaller browser window*/
-    width: 10rem;
-    border: 1px solid black;
+.main {
+  grid-area: main;
+  overflow-y: auto;
 }
 
-.top-left {
-    flex-shink: 0;
-    height: 2.25rem;
-    border: 1px solid black;
+.sidebar {
+  grid-area: sidebar;
 }
 
-.top-right {
-    flex-shrink: 0;
-    display: inline-flex;
+.topnav, .main, .sidebar {
+  border: 1px solid black;
 }
 
 ul {
@@ -42,7 +46,15 @@ li{
   margin-right: 20px;
 }
 
-.bottom {
-    flex-grow: 1;  /*ensures that the container will take up the full height of the parent container*/
-    overflow-y: auto;  /*adds scroll to this container*/
+/******************************************************************************/
+
+.main {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(auto, auto);
+  grid-template-columns: [col1-start] 12.5vw [col1-end col2-start] 1fr [col2-end];
+}
+
+.main p {
+  padding: 20px;
 }
