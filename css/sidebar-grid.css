@@ -1,3 +1,10 @@
+/* Table of Contents:
+  1. skeleton.....(layout info)
+  2. styling..........(visuals)
+*/
+
+/* 1. skeleton ****************************************************************/
+
 * {
   box-sizing: border-box;
 }
@@ -42,12 +49,13 @@ ul {
     list-style: none;
 }
 
-li{
+li {
   margin-right: 20px;
 }
 
-/******************************************************************************/
+/* 2. styling *****************************************************************/
 
+/* 2a. main content */
 .main {
   display: grid;
   grid-auto-flow: row;
@@ -57,4 +65,33 @@ li{
 
 .main p {
   padding: 20px;
+}
+
+/* 2b. sidebar */
+.sidebar {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 2fr 1fr 8fr;
+  grid-template-areas: "advanced"
+                       "tags"
+                       "filter"
+                       "small-timeline";
+}
+
+.advanced {
+  grid-area: advanced;
+}
+
+.tags {
+  grid-area: tags;
+}
+
+.filter {
+  grid-area: filter;
+}
+
+.small-timeline {
+  grid-area: small-timeline;
 }
