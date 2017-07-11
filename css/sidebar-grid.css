@@ -69,7 +69,7 @@ body {
 }
 
 .options, .tags, .small-timeline {
-  border: 1px solid blue; /* temporary */
+  border: 1px solid lightgrey; /* temporary */
 }
 
 /* 2b. styling */
@@ -87,8 +87,18 @@ body {
 .small-timeline {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
-.admin, .student, .none {
+.line {
+  z-index: -1;
+  position: absolute;
+  margin-left: 50%;
+  transform: translate(-1px, 0);
+  height: 100%;
+  width: 2px;
+  background-color: lightgrey;
+}
+.admin, .student, .none { /* dots */
   height: 5px;
   width: 5px;
   border-radius: 50%;
