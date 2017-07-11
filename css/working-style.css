@@ -3,13 +3,13 @@ body {
   width: 100%;
   font-size: 100%;
   font-family: 'Raleway', sans-serif;
-  background-image: linear-gradient(to right, #6f256f -10%, rgba(255, 255, 255, 0), #6f256f 110%), url(../img/paper.jpg);
-  background-attachment: fixed, fixed;
+  background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);  background-attachment: fixed, fixed;
   margin: 0;
 }
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 900px) {
   body {
-    background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);
+    background-image: linear-gradient(to right, #6f256f -10%, rgba(255, 255, 255, 0), #6f256f 110%), url(../img/paper.jpg);
+
   }
 }
 

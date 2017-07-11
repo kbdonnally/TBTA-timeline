@@ -1,35 +1,52 @@
 /* Table of Contents:
-  1. skeleton.....(layout info)
-  2. styling..........(visuals)
+  1. skeleton................................(layout info)
+  2. sidebar..........(skeleton, visuals for each element)
+  3. main.............(skeleton, visuals for each element)
 */
 
 /* 1. skeleton ****************************************************************/
+
 html {
   height: 100%;
 }
+
 body {
   height: 100%;
-  overflow: hidden;
   margin: 0px;
   box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  font-size: 100%;
+  /* grid info: */
   display: grid;
   grid-gap: 0px;
   grid-template-columns: 1fr 10rem;
   grid-template-areas: "main sidebar";
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .main {
   grid-area: main;
-  overflow-y: auto;
 }
+
 .sidebar {
-  grid-area: sidebar;
-  overflow-y: auto;
+  height: 100%;
+  width: 10rem;
+  position: fixed; /* solves scrollbar issue */
+  top: 0;
+  right: 0;
+
 }
+
 .sidebar, .main {
   border: 1px solid black;
 }
-/* sidebar styles */
+
+/* 2. sidebar **************************************************************/
+
+/* 2a. skeleton */
 .sidebar {
   display: grid;
   grid-template-columns: 1fr;
@@ -42,18 +59,21 @@ body {
 .options {
   grid-area: options;
 }
+
 .tags {
   grid-area: tags;
 }
+
 .small-timeline {
   grid-area: small-timeline;
 }
 
 .options, .tags, .small-timeline {
-  border: 2px solid red;
+  border: 1px solid blue; /* temporary */
 }
 
-/* tag boxes */
+/* 2b. styling */
+
 .tags p {
   display: inline-block;
   padding: 2px;
@@ -87,57 +107,10 @@ body {
 .none {
   background-color: transparent;
 }
-* {
-  box-sizing: border-box;
-}
 
-html {
-    height: 100%;
-}
+/* 2. main ********************************************************************/
 
-body {
-    height: 100%;
-    overflow: hidden;  /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
-    margin: 0px;  /*removes default style*/
-    box-sizing: border-box;
-    display: grid;
-    grid-gap: 0px;
-    grid-template-columns: 1fr 10rem;
-    grid-template-rows: 3rem 1fr;
-    grid-template-areas: "topnav topnav"
-                         "main sidebar";
-
-}
-
-.topnav {
-  grid-area: topnav;
-}
-
-.main {
-  grid-area: main;
-  overflow-y: auto;
-}
-
-.sidebar {
-  grid-area: sidebar;
-}
-
-.topnav, .main, .sidebar {
-  border: 1px solid black;
-}
-
-ul {
-    display: inline-flex;
-    list-style: none;
-}
-
-li {
-  margin-right: 20px;
-}
-
-/* 2. styling *****************************************************************/
-
-/* 2a. main content */
+/* 2a. skeleton */
 .main {
   display: grid;
   grid-auto-flow: row;
@@ -149,31 +122,4 @@ li {
   padding: 20px;
 }
 
-/* 2b. sidebar */
-.sidebar {
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: 0px;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr 1fr 8fr;
-  grid-template-areas: "advanced"
-                       "tags"
-                       "filter"
-                       "small-timeline";
-}
-
-.advanced {
-  grid-area: advanced;
-}
-
-.tags {
-  grid-area: tags;
-}
-
-.filter {
-  grid-area: filter;
-}
-
-.small-timeline {
-  grid-area: small-timeline;
-}
+/* 2b. styling */
