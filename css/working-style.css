@@ -1,4 +1,4 @@
-/* Table of Contents:
+/* Sidebar Table of Contents:
   1. skeleton................................(layout info)
   2. sidebar..........(skeleton, visuals for each element)
   3. main.............(skeleton, visuals for each element)
@@ -40,9 +40,6 @@ body {
 
 }
 
-.sidebar, .main {
-  border: 1px solid lightgrey;
-}
 
 /* 2. sidebar **************************************************************/
 
@@ -50,14 +47,10 @@ body {
 .sidebar {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1.5rem 2rem 1fr;
-  grid-template-areas: "options"
-                       "tags"
-                       "small-timeline";
-}
-
-.options {
-  grid-area: options;
+  grid-template-rows: 3rem 1fr 1rem;
+  grid-template-areas: '.'
+                       "small-timeline"
+                       '.';
 }
 
 .tags {
@@ -69,13 +62,19 @@ body {
 }
 
 .options, .tags, .small-timeline {
-  border: 1px solid lightgrey; /* temporary */
+  /* border: 1px solid lightgrey; /* temporary */
 }
 
 /* 2b. styling */
 
+.sidebar {
+  background-color: rgba(255, 255, 255, .5);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+}
 .options {
   font-size: .5rem;
+  text-align: center;
+  padding-top: .5rem;
 }
 
 .tags p {
@@ -91,7 +90,7 @@ body {
 /* lil timeline */
 .small-timeline {
   display: grid;
-  grid-template-rows: 5px repeat(199, auto) 5px;
+  grid-template-rows: 2.25rem .5rem repeat(199, auto) 5px; /* do 2 columns so you can have the years on the edge */
   position: relative;
 }
 .line {
@@ -101,36 +100,39 @@ body {
   transform: translate(-1px, 0);
   height: 100%;
   width: 1px;
-  background-color: darkgrey;
+  background-color: rgba(0,0,0,.5);
 }
 .admin, .student, .fed, .none { /* dots */       /* full size screen only!!! */
   height: 5px;
   width: 5px;
   border-radius: 50%;
-  margin: .25px 1px;
+  margin: .25px 1.5px;
   padding: 0px;
   font-size: .5rem;
+  font-weight: bold;
 }
 .none {
   height: 1px;
   margin: 0px;
 }
-/* p.admin, p.student, p.fed, p.none {
-  font-size: .5rem;
-} */
+.admin:hover, .student:hover, .fed:hover {
+  background-color: yellow;
+  border: 2px solid yellow;
+  box-sizing: content-box;
+}
 .small-timeline div {
   display: flex;
   justify-content: center;
-/*  border: .25px solid black; */
+  align-items: center;
 }
 .admin {
-  background-color: lightgreen;
+  background-color: #bae397;
 }
 .student {
   background-color: purple;
 }
 .fed {
-  background-color: orange;
+  background-color: #807615;
 }
 .none {
   background-color: transparent;
@@ -138,7 +140,7 @@ body {
 
 /* 2. main ********************************************************************/
 
-/* 2a. skeleton */
+/* 2a. skeleton
 .main {
   display: grid;
   grid-auto-flow: row;
@@ -150,26 +152,28 @@ body {
   padding: 20px;
 }
 
-/* 2b. styling */
+ 2b. styling */
 
 
+/* Main Table of Contents
+  1. defaults................(background, font, font sizes)
+  2. topnav..................(details)
+  3. splash..................(details)
+  4. entry container.........(skeleton, visuals)
+*/
 
 
-
-/* thru container setup = good generic grid */
 body {
   width: 100%;
-  font-size: 100%;
-  font-family: 'Raleway', sans-serif;
   background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);  background-attachment: fixed, fixed;
   margin: 0;
 }
-@media screen and (min-width: 900px) {
+/* @media screen and (min-width: 900px) {
   body {
     background-image: linear-gradient(to right, #6f256f -10%, rgba(255, 255, 255, 0), #6f256f 110%), url(../img/paper.jpg);
 
   }
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -190,7 +194,7 @@ p {
   font-size: 1rem;
 }
 
-/* ----- intro work: -------------------------------------- */
+/*2. top menu*/
 
 /* fixed menu - want animation so that it slides out if you scroll up, otherwise hidden once begin scrolling */
 /* gradient: from top, do white opaque to 0 to opaque to 0 again - want the very top to be white, not purple */
@@ -375,10 +379,11 @@ header {
 .circle3 {
   grid-area: circle3;
 }
-/* ----- grid setup: -------------------------------------- */
+
+/* ----- 4. container skeleton -------------------------------------- */
 
 .container {
-  margin: auto 2.5vw;
+  margin: auto 3rem auto 1rem;
   display: grid;
   grid-gap: 10px;
   grid-auto-flow: row;
@@ -401,22 +406,21 @@ header {
 .date {
   grid-column: col1-start;
 }
-@media all and (min-width: 900px) {
+/* @media all and (min-width: 900px) {
   .container {
-    /* issue: when resized, scroll bar appears...? */
-    margin: auto 2.5vw;
+    margin: auto 2rem;
     display: grid;
     grid-gap: 10px;
     grid-auto-flow: row dense;
     grid-auto-rows: minmax(10px, auto);
     grid-template-columns: [oe-start ed-start] 1fr [oe-end ed-end tl-start] 12.5vw [tl-end ee-start od-start] 1fr [ee-end od-end];
-    /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date' */
+    /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date'
   }
-}
+} */
 
 /* ----- grid item placement: ----------------------------- */
 
-@media screen and (min-width: 900px) {
+/* @media screen and (min-width: 900px) {
   .header {
     grid-column: 1 / -1;
     grid-row: 1;
@@ -430,9 +434,9 @@ header {
   }
 
   .tl-wrapper {
-    grid-column: 2; /* 1 for small screens */
+    grid-column: 2; /* 1 for small screens
     justify-self: center;
-  } /* holds timeline/icons */
+  } /* holds timeline/icons
   .date.odd {
     grid-column: od-start;
   }
@@ -440,12 +444,9 @@ header {
     grid-column: ed-start;
     text-align: right;
   }
-}
+} */
 
-
-
-
-/* --------------------- visual styling: ------------------------ */
+/* --------------------- 4b. entry visuals: ------------------------ */
 
 /* Table of Contents:   (1).........header            (insert line numbers soon)
                         (2)....line itself
@@ -471,7 +472,7 @@ header {
   transform: translate(-2px, 0);
   background-color: purple;
 }
-@media screen and (min-width: 750px) {
+/* @media screen and (min-width: 900px) {
   .dots {
     grid-column: 1 / -1;
     justify-self: center;
@@ -481,7 +482,7 @@ header {
     transform: translate(-2px, 0);
     background-color: purple;
   }
-}
+} */
 
 p[class="dots"]:nth-of-type(1) {
   opacity: .5;
@@ -549,8 +550,7 @@ p[class="dots"]:nth-of-type(3) {
 
 .entry {
   position: relative;
-  padding: 2rem;
-  margin: auto 2vw;
+  padding: 1.5rem 2rem;
   background-color: rgba(255, 255, 255, 1);
   text-align: left;
   border-radius: 3px;
@@ -566,15 +566,15 @@ p[class="dots"]:nth-of-type(3) {
   border: 7px solid transparent;
   border-right: 7px solid white;
 }
-@media only screen and (min-width: 1024px) {
-  .entry.odd::before { /* odd arrow */
+/* @media only screen and (min-width: 900px) {
+  .entry.odd::before { /* odd arrow
     top: 2rem;
     left: 100%;
     transform: translate(0, -50%);
     border-color: transparent;
     border-left-color: white;
   }
-}
+} */
 
 /* ------ 4b. text -------------- */
 
@@ -602,13 +602,13 @@ p[class="dots"]:nth-of-type(3) {
   visibility: hidden;
 }
 
-@media screen and (min-width: 900px) {
+/* @media screen and (min-width: 900px) {
   .date {
     visibility: visible;
     font-size: 1rem;
     height: 3rem;
     line-height: 3rem; /* same as icon height */
-    width: auto;
+  /*  width: auto;
   }
 }
 
