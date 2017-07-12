@@ -41,7 +41,7 @@ body {
 }
 
 .sidebar, .main {
-  border: 1px solid black;
+  border: 1px solid lightgrey;
 }
 
 /* 2. sidebar **************************************************************/
@@ -50,7 +50,7 @@ body {
 .sidebar {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 2fr 9fr;
+  grid-template-rows: 1.5rem 2rem 1fr;
   grid-template-areas: "options"
                        "tags"
                        "small-timeline";
@@ -74,19 +74,24 @@ body {
 
 /* 2b. styling */
 
+.options {
+  font-size: .5rem;
+}
+
 .tags p {
   display: inline-block;
   padding: 2px;
   margin: 2px;
-  border: 2px solid purple;
+  border: .5px solid purple;
   background-color: lavender;
   border-radius: 1rem;
+  font-size: .5rem;
 }
 
 /* lil timeline */
 .small-timeline {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 5px repeat(199, auto) 5px;
   position: relative;
 }
 .line {
@@ -95,24 +100,37 @@ body {
   margin-left: 50%;
   transform: translate(-1px, 0);
   height: 100%;
-  width: 2px;
-  background-color: lightgrey;
+  width: 1px;
+  background-color: darkgrey;
 }
-.admin, .student, .none { /* dots */
-  height: 3px;
-  width: 3px;
+.admin, .student, .fed, .none { /* dots */       /* full size screen only!!! */
+  height: 5px;
+  width: 5px;
   border-radius: 50%;
-  margin: 1px;
+  margin: .25px 1px;
+  padding: 0px;
+  font-size: .5rem;
 }
+.none {
+  height: 1px;
+  margin: 0px;
+}
+/* p.admin, p.student, p.fed, p.none {
+  font-size: .5rem;
+} */
 .small-timeline div {
   display: flex;
   justify-content: center;
+/*  border: .25px solid black; */
 }
 .admin {
   background-color: lightgreen;
 }
 .student {
   background-color: purple;
+}
+.fed {
+  background-color: orange;
 }
 .none {
   background-color: transparent;
