@@ -149,10 +149,14 @@ body {
                        "reason1 reason2 reason3"
                        "circle1 circle2 circle3";
   grid-template-columns: 1fr 1fr 1fr;
-  align-content: center;
+  align-content: space-around;
+  justify-items: center;
   margin: 0;
   height: 110vh;
-  background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  background-image: url(../img/diagmonds.png);
+  background-color: #8abd5f;
+  background-blend-mode: screen;
+  text-align: center;
 }
 
 .hook {
@@ -180,14 +184,26 @@ body {
 /* 3b. styling */
 
 .hook {
-  border: 2px solid cornflowerblue;
+  border: 2px dotted cornflowerblue;
+  font-size: 2rem;
+  font-family: 'Playball', cursive;
+}
+.mockdots {
+  height: 12px;
+  width: 12px;
+  margin: auto;
+  padding: 0;
+  background-color: black;
+  border-radius: 50%;
 }
 .reason1, .reason2, .reason3 { /* group style -> can change individuals below */
-  border: 2px solid green;
-}
-.reason2 {
   border: 2px dotted pink;
+  width: 15rem; /* match circles */
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .circle1, .circle2, .circle3 {
-  border: 2px solid coral;
+  border: 2px dotted chartreuse;
+  height: 15rem;
+  width: 15rem; /* 12rem for 768px cutoff */
 }
