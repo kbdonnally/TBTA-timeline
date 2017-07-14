@@ -1,0 +1,207 @@
+/* Sidebar Table of Contents:
+  1. skeleton................................(layout info)
+  2. sidebar..........(skeleton, visuals for each element)
+  3. main.............(skeleton, visuals for each element)
+*/
+
+/* 1. skeleton */
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  font-size: 100%;
+  /* grid info: */
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: 1fr 10rem;
+  grid-template-areas: "main sidebar";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  grid-area: main;
+}
+
+.sidebar {
+  height: 100%;
+  width: 10rem;
+  position: fixed; /* solves scrollbar issue */
+  top: 0;
+  right: 0;
+
+}
+
+
+/* 2. sidebar **************************************************************/
+
+/* 2a. skeleton */
+.sidebar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3rem 1fr 1rem;
+  grid-template-areas: '.'
+                       "small-timeline"
+                       '.';
+}
+
+.tags {
+  grid-area: tags;
+}
+
+.small-timeline {
+  grid-area: small-timeline;
+}
+
+.options, .tags, .small-timeline {
+  /* border: 1px solid lightgrey; /* temporary */
+}
+
+/* 2b. styling */
+
+.sidebar {
+  background-color: rgba(255, 255, 255, .5);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+}
+.options {
+  font-size: .5rem;
+  text-align: center;
+  padding-top: .5rem;
+}
+
+.tags p {
+  display: inline-block;
+  padding: 2px;
+  margin: 2px;
+  border: .5px solid purple;
+  background-color: lavender;
+  border-radius: 1rem;
+  font-size: .5rem;
+}
+
+/* lil timeline */
+.small-timeline {
+  display: grid;
+  grid-template-rows: 2.25rem .5rem repeat(199, auto) 5px; /* do 2 columns so you can have the years on the edge */
+  position: relative;
+}
+.line {
+  z-index: -1;
+  position: absolute;
+  margin-left: 50%;
+  transform: translate(-1px, 0);
+  height: 100%;
+  width: 1px;
+  background-color: rgba(0,0,0,.5);
+}
+.admin, .student, .fed, .none { /* dots */       /* full size screen only!!! */
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  margin: .25px 1.5px;
+  padding: 0px;
+  font-size: .5rem;
+  font-weight: bold;
+}
+.none {
+  height: 1px;
+  margin: 0px;
+}
+.admin:hover, .student:hover, .fed:hover {
+  background-color: yellow;
+  border: 2px solid yellow;
+  box-sizing: content-box;
+}
+.small-timeline div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admin {
+  background-color: #bae397;
+}
+.student {
+  background-color: purple;
+}
+.fed {
+  background-color: #807615;
+}
+.none {
+  background-color: transparent;
+}
+
+/* 3. explainer ***************************************************************/
+
+/* 3a. skeleton */
+
+.explainer {
+  display: grid;
+  grid-template-areas: "hook     hook      hook"
+                       "reason1 reason2 reason3"
+                       "circle1 circle2 circle3";
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: center;
+  margin: 0;
+  padding: 2.5vh 0;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+.hook {
+  grid-area: hook;
+  border: 1px olive solid;
+  height: 25vh;
+  margin: 2rem 0;
+  width: 100%;
+}
+.reason1, .reason2, .reason3 {
+  height: 7rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 3.5rem;
+}
+.reason1 {
+  grid-area: reason1;
+  border: 1px white solid;
+}
+.reason2 {
+  grid-area: reason2;
+  background-color: white;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+}
+.reason3 {
+  grid-area: reason3;
+  border: 1px white solid;
+}
+.circle1, .circle2, .circle3 {
+  background-color: rgba(255, 255, 255, .8);
+  width: 20rem;
+  height: 20rem;
+  /* small = width: 30vh;
+  height: 30vh; */
+  border-radius: 50%;
+  justify-self: center;
+}
+.circle1 p {
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+.circle1 {
+  grid-area: circle1;
+}
+.circle2 {
+  grid-area: circle2;
+}
+.circle3 {
+  grid-area: circle3;
+}
