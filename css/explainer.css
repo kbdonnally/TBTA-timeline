@@ -31,7 +31,6 @@ body {
 }
 .dummy {
   grid-area: dummy;
-  border: 2px solid black;
   display: grid;
   grid-auto-flow: row;
   grid-auto-rows: minmax(auto, auto);
@@ -68,6 +67,7 @@ body {
 
 .sidebar {
   background-color: rgba(255, 255, 255, .5);
+  background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), linear-gradient(rgba(111, 37, 111, .9), rgba(111, 37, 111, .9));
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
 }
 .options {
@@ -99,7 +99,7 @@ body {
   transform: translate(-1px, 0);
   height: 100%;
   width: 1px;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.9);
 }
 .admin, .student, .fed, .none { /* dots */       /* full size screen only!!! */
   height: 5px;
@@ -151,9 +151,10 @@ body {
   justify-items: center;
   margin: 0;
   height: 110vh;
-  background-image: url(../img/diagmonds.png);
-  background-color: #8abd5f;
-  background-blend-mode: screen;
+  background-image: url(../img/better-together.jpg);
+  background-size: cover;
+  /*background-color: #8abd5f;
+  background-blend-mode: screen; */
   text-align: center;
 }
 
@@ -205,4 +206,8 @@ body {
   border: 2px dotted chartreuse;
   height: 15rem;
   width: 15rem; /* 12rem for 768px cutoff */
+  background-color: rgba(255, 255, 255, .5);
+}
+.circle2 {
+  background: transparent;
 }
