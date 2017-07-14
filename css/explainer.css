@@ -28,7 +28,6 @@ body {
 }
 .main {
   grid-area: main;
-  border: 3px solid purple;
 }
 .dummy {
   grid-area: dummy;
@@ -53,7 +52,6 @@ body {
 
 /* 2a. skeleton */
 .sidebar {
-  border: 2px solid orange; /* FOR TESTING */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 3rem 1fr 1rem;
@@ -184,16 +182,17 @@ body {
 /* 3b. styling */
 
 .hook {
-  border: 2px dotted cornflowerblue;
+  padding: 0 1rem;
   font-size: 2rem;
   font-family: 'Playball', cursive;
+  color: white;
 }
 .mockdots {
   height: 12px;
   width: 12px;
   margin: auto;
   padding: 0;
-  background-color: black;
+  background-color: white;
   border-radius: 50%;
 }
 .reason1, .reason2, .reason3 { /* group style -> can change individuals below */
