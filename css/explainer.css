@@ -1,4 +1,4 @@
-/* Sidebar Table of Contents:
+/* Table of Contents:
   1. skeleton................................(layout info)
   2. sidebar..........(skeleton, visuals for each element)
   3. explainer........(skeleton, visuals for each element)
@@ -29,11 +29,10 @@ body {
 .main {
   grid-area: main;
   border: 3px solid purple;
-
 }
 .dummy {
   grid-area: dummy;
-  border: 1px solid black;
+  border: 2px solid black;
   display: grid;
   grid-auto-flow: row;
   grid-auto-rows: minmax(auto, auto);
@@ -58,21 +57,13 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 3rem 1fr 1rem;
+  /*add filter options*/
   grid-template-areas: '.'
                        "small-timeline"
                        '.';
 }
-
-.tags {
-  grid-area: tags;
-}
-
 .small-timeline {
   grid-area: small-timeline;
-}
-
-.options, .tags, .small-timeline {
-  /* border: 1px solid lightgrey; /* temporary */
 }
 
 /* 2b. styling */
