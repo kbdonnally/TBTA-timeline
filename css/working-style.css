@@ -140,20 +140,6 @@ body {
 
 /* 2. main ********************************************************************/
 
-/* 2a. skeleton
-.main {
-  display: grid;
-  grid-auto-flow: row;
-  grid-auto-rows: minmax(auto, auto);
-  grid-template-columns: [col1-start] 12.5vw [col1-end col2-start] 1fr [col2-end];
-}
-
-.main p {
-  padding: 20px;
-}
-
- 2b. styling */
-
 
 /* Main Table of Contents
   1. defaults................(background, font, font sizes)
@@ -165,7 +151,8 @@ body {
 
 body {
   width: 100%;
-  background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);  background-attachment: fixed, fixed;
+  background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);
+  background-attachment: fixed, fixed;
   margin: 0;
 }
 /* @media screen and (min-width: 900px) {
@@ -406,7 +393,7 @@ header {
 .date {
   grid-column: col1-start;
 }
-/* @media all and (min-width: 900px) {
+@media all and (min-width: 900px) {
   .container {
     margin: auto 2rem;
     display: grid;
@@ -414,29 +401,22 @@ header {
     grid-auto-flow: row dense;
     grid-auto-rows: minmax(10px, auto);
     grid-template-columns: [oe-start ed-start] 1fr [oe-end ed-end tl-start] 12.5vw [tl-end ee-start od-start] 1fr [ee-end od-end];
-    /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date'
+    /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date' */
   }
-} */
-
-/* ----- grid item placement: ----------------------------- */
-
-/* @media screen and (min-width: 900px) {
   .header {
     grid-column: 1 / -1;
     grid-row: 1;
   }
-
   .entry.odd {
     grid-column: oe-start;
   }
   .entry.even {
     grid-column: ee-start;
   }
-
   .tl-wrapper {
-    grid-column: 2; /* 1 for small screens
+    grid-column: 2;
     justify-self: center;
-  } /* holds timeline/icons
+  } /* holds timeline/icons */
   .date.odd {
     grid-column: od-start;
   }
@@ -444,7 +424,7 @@ header {
     grid-column: ed-start;
     text-align: right;
   }
-} */
+}
 
 /* --------------------- 4b. entry visuals: ------------------------ */
 
@@ -472,7 +452,7 @@ header {
   transform: translate(-2px, 0);
   background-color: purple;
 }
-/* @media screen and (min-width: 900px) {
+@media screen and (min-width: 900px) {
   .dots {
     grid-column: 1 / -1;
     justify-self: center;
@@ -482,7 +462,7 @@ header {
     transform: translate(-2px, 0);
     background-color: purple;
   }
-} */
+}
 
 p[class="dots"]:nth-of-type(1) {
   opacity: .5;
@@ -514,10 +494,7 @@ p[class="dots"]:nth-of-type(3) {
   height: 110%;
 } /* hacky fix that requires numbers */
 
-
-
-/* 3. icon */
-.icon { /* circle */
+.icon {
   transform: translate(-50%, 0);
   margin-left: 2px; /* compensate for centering timeline itself - is inside the div */
   height: 3rem;
@@ -527,7 +504,7 @@ p[class="dots"]:nth-of-type(3) {
   border: 3px solid #6f256f;
   z-index: 10;
 }
-.icon img { /* pic */
+.icon img {
   height: 1.5rem;
   width: 1.5rem;
   position: relative;
@@ -545,8 +522,6 @@ p[class="dots"]:nth-of-type(3) {
     width: 2rem;
   }
 }
-
-/* ------- 4. entry blocks ----------- */
 
 .entry {
   position: relative;
@@ -566,19 +541,17 @@ p[class="dots"]:nth-of-type(3) {
   border: 7px solid transparent;
   border-right: 7px solid white;
 }
-/* @media only screen and (min-width: 900px) {
-  .entry.odd::before { /* odd arrow
+@media only screen and (min-width: 900px) {
+  .entry.odd::before { /* odd arrow */
     top: 2rem;
     left: 100%;
     transform: translate(0, -50%);
     border-color: transparent;
     border-left-color: white;
   }
-} */
+}
 
-/* ------ 4b. text -------------- */
-
-.entry h1, .entry h2, .entry h3 {
+.entry h2, .entry h3 {
   margin: 0;
 }
 /* change sizes for lil screens!!! */
@@ -596,22 +569,18 @@ p[class="dots"]:nth-of-type(3) {
   line-height: 1.6; /* make 1 or 1.15 for lil screens */
 }
 
-/*---------------------- 5. date ------------------------- */
-
 .date {
   visibility: hidden;
 }
-
-/* @media screen and (min-width: 900px) {
+@media screen and (min-width: 900px) {
   .date {
     visibility: visible;
     font-size: 1rem;
     height: 3rem;
     line-height: 3rem; /* same as icon height */
-  /*  width: auto;
+    width: auto;
   }
 }
-
 @media only screen and (min-width: 1024px) {
   .date {
     height: 4rem;
