@@ -21,6 +21,8 @@ body {
   grid-gap: 0px;
   grid-template-columns: 1fr 10rem;
   grid-template-areas: "main sidebar";
+  background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);  background-attachment: fixed, fixed;
+
 }
 
 * {
@@ -55,9 +57,12 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: 3rem 1fr 1rem;
   /*add filter options*/
-  grid-template-areas: '.'
+  grid-template-areas: 'filters'
                        "small-timeline"
                        '.';
+}
+.filters {
+  grid-area: filters;
 }
 .small-timeline {
   grid-area: small-timeline;
@@ -66,8 +71,7 @@ body {
 /* 2b. styling */
 
 .sidebar {
-  background-color: rgba(255, 255, 255, .5);
-  background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), linear-gradient(rgba(111, 37, 111, .9), rgba(111, 37, 111, .9));
+  background-color: rgba(255, 255, 255, .3);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
 }
 .options {
@@ -89,7 +93,7 @@ body {
 /* lil timeline */
 .small-timeline {
   display: grid;
-  grid-template-rows: 2.25rem .5rem repeat(199, auto) 5px; /* do 2 columns so you can have the years on the edge */
+  grid-template-rows: repeat(199, auto) 5px; /* do 2 columns so you can have the years on the edge */
   position: relative;
 }
 .line {
@@ -99,7 +103,7 @@ body {
   transform: translate(-1px, 0);
   height: 100%;
   width: 1px;
-  background-color: rgba(0,0,0,.9);
+  background-color: rgba(200, 200, 200,.9);
 }
 .admin, .student, .fed, .none { /* dots */       /* full size screen only!!! */
   height: 5px;
@@ -109,6 +113,9 @@ body {
   padding: 0px;
   font-size: .5rem;
   font-weight: bold;
+  color: rgba(200, 200, 200, 1);
+  display: block;
+  text-decoration: none;
 }
 .none {
   height: 1px;
@@ -143,21 +150,21 @@ body {
 
 .explainer {
   display: grid;
-  grid-template-areas: "hook     hook      hook"
+  grid-template-areas: "hook        hook  hook"
                        "reason1 reason2 reason3"
                        "circle1 circle2 circle3";
   grid-template-columns: 1fr 1fr 1fr;
-  align-content: space-around;
+  align-content: center;
   justify-items: center;
   margin: 0;
+  padding: 0 1.5rem;
   height: 110vh;
-  background-image: url(../img/better-together.jpg);
-  background-size: cover;
-  /*background-color: #8abd5f;
-  background-blend-mode: screen; */
+  background-image: url(../img/diagmonds.png);
+  /*background-size: 100% 100%;*/
+  background-color: #8abd5f;
+  background-blend-mode: screen;
   text-align: center;
 }
-
 .hook {
   grid-area: hook;
 }
@@ -169,6 +176,16 @@ body {
 }
 .reason3 {
   grid-area: reason3;
+}
+.downarrow {
+  margin: 0 auto;
+  transform: translate(0, 50%);
+  width: 0;
+  height: 0;
+  border-color: white transparent transparent transparent;
+  border-width: 16px;
+  border-style: solid;
+  box-sizing: content-box;
 }
 .circle1 {
   grid-area: circle1;
@@ -184,9 +201,11 @@ body {
 
 .hook {
   padding: 0 1rem;
+  margin-bottom: 2rem;
   font-size: 2rem;
-  font-family: 'Playball', cursive;
+  /*font-family: 'Playball', cursive; */
   color: white;
+  font-family: 'Roboto Slab', serif;
 }
 .mockdots {
   height: 12px;
@@ -197,17 +216,28 @@ body {
   border-radius: 50%;
 }
 .reason1, .reason2, .reason3 { /* group style -> can change individuals below */
-  border: 2px dotted pink;
-  width: 15rem; /* match circles */
+  color: white;
+  width: 16rem; /* match circles */
+  margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
 }
+.reason2 {
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+}
 .circle1, .circle2, .circle3 {
-  border: 2px dotted chartreuse;
+  border-radius: 50%;
   height: 15rem;
   width: 15rem; /* 12rem for 768px cutoff */
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .3);
+  font-family: 'Roboto Slab', serif;
+  padding: 1rem;
 }
-.circle2 {
-  background: transparent;
+.circle1 p, .circle2 p, .circle3 p {
+  margin: 0;
+  padding: 0;
+  margin-top: 50%;
+  transform: translate(0%, -50%);
+  color: white;
 }

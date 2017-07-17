@@ -29,11 +29,25 @@ allyears = [y for y in range(1819,2018)]      # len 199
 
 paradots = dot_funcs.makeParas(classes) # len 268, <p> w/ classes filled in
 
-fullyears = dot_funcs.hopefulYears(yearfreq)
+fullyears = dot_funcs.hopefulYears(yearfreq) # len 268, all yrs # times appear
 
+hreflist = dot_funcs.yearsForIds(yearfreq) # len 268, hrefs for entries; if yr =/= appear, ==0
+
+idlist = [h for h in hreflist if h != 0] # len 112, removes yrs w/o entry so can add ids to original divs
+print(idlist, len(idlist))
+
+# below: trying to format with {0}
+def fillInIds(paradots):
+	withids = ''
+	for t in range(50):
+		withids += paradots[t].format(allyears[t])
+	return withids
+
+dotswithids = fillInIds(paradots)
 
 
 finaldots = dot_funcs.fullDivs(fullyears, paradots)
 
-funcs.strToHTMLDoc('autofilled-dots-1', finaldots)
-print(finaldots)
+
+#funcs.strToHTMLDoc('autofilled-dots-2', finaldots)
+#print(finaldots)

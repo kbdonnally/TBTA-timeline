@@ -1,7 +1,7 @@
 # csv-commands.py
 # NB: if no entry in given vector, has been replaced with 'none' or 0, depending on context
 
-import funcs
+import funcs, testing
 
 # below: denote odd or even entry # so large screens know which way to align
 # *56 b/c len(entries) = 112
@@ -31,18 +31,20 @@ sources = funcs.elemSources(elements)
 # below: assigns icon img title and alt text based on entry's source
 picnames = funcs.createPicNames(sources)
 picalts = funcs.createPicAlts(picnames)
-# print(titles)
+
+# below: new 7/17, adding ids to divs
+ids = testing.idlist
 
 def fillInTemplates(madlibslist):
 	newsents = ''
 	for t in range(112):
-		newsents += madlibslist[t].format(entries[t], picnames[t], picalts[t], oddeven[t], titles[t], sources[t], months[t], ordinaldays[t], years[t], texts[t], oddeven[t], months[t], years[t], entries[t])
+		newsents += madlibslist[t].format(entries[t], picnames[t], picalts[t], oddeven[t], titles[t], sources[t], months[t], ordinaldays[t], years[t], texts[t], oddeven[t], months[t], years[t], entries[t], ids[t])
 	return newsents
 
 
 filledentries = fillInTemplates(funcs.madlibslist)
 
-funcs.strToHTMLDoc('autofilled-entries-1', filledentries)
+funcs.strToHTMLDoc('autofilled-entries-2', filledentries)
 
 
 # --------- KEY: ----------

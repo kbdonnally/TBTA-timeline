@@ -149,7 +149,7 @@ def codesToClasses(flattened):
 def makeParas(classes):
 	paras = []
 	for x in classes:
-		p = ' <p class="' + x + '"></p>'
+		p = ' <a href="#{0}" class="' + x + '"></a>' # changing to <a> from <p>, adding href="#{0}"
 		paras.append(p)
 	return paras
 
@@ -163,6 +163,20 @@ def hopefulYears(yearfreq):
 			for i in range(n):
 				moreyears.append(y)
 	return moreyears
+
+# below: len 268, mixed int/str list of id names accounting for >1 entry in yr
+def yearsForIds(yearfreq):
+	moreyears = []
+	for i, (y, n) in enumerate(yearfreq):
+		if (n == 0):
+			moreyears.append(0)
+		elif (n == 1):
+			moreyears.append(y)
+		elif (n > 1):
+			for i in range(n):
+				moreyears.append(str(y)+'-'+str(i+1))
+	return moreyears
+
 
 def fullDivs(fullyears, paradots):
 	mystring = '''<div> <!--1819-->
