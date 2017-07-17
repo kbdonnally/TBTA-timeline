@@ -149,7 +149,7 @@ def codesToClasses(flattened):
 def makeParas(dataforparas):
 	paras = []
 	for i, (h, c) in enumerate(dataforparas):
-		p = ' <a href="#' + str(h) + '" class="' + c + '"></a>' # changing to <a> from <p>, adding href="#{0}"
+		p = ' <a href="#' + str(h) + '" class="' + c + '" alt="dot"></a>' # changing to <a> from <p>, adding href="#{0}"
 		paras.append(p)
 	return paras
 

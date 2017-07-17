@@ -40,5 +40,4 @@ paradots = dot_funcs.makeParas(dataforparas) # len 268, <p> w/ classes & hrefs f
 
 finaldots = dot_funcs.fullDivs(fullyears, paradots) # str of full divs ready to be written to html
 
-
-funcs.strToHTMLDoc('autofilled-dots-3', finaldots)
+funcs.strToHTMLDoc('autofilled-dots-3', finaldots) # small glitch - if >1 entry, puts 1st 2 on same line and adds extra space b/t last entry & div
