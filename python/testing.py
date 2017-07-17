@@ -27,27 +27,18 @@ classes = dot_funcs.codesToClasses(flattened) # len 268, classes in words
 
 allyears = [y for y in range(1819,2018)]      # len 199
 
-paradots = dot_funcs.makeParas(classes) # len 268, <p> w/ classes filled in
-
 fullyears = dot_funcs.hopefulYears(yearfreq) # len 268, all yrs # times appear
 
 hreflist = dot_funcs.yearsForIds(yearfreq) # len 268, hrefs for entries; if yr =/= appear, ==0
 
 idlist = [h for h in hreflist if h != 0] # len 112, removes yrs w/o entry so can add ids to original divs
-print(idlist, len(idlist))
+# ^NB: used in csv_commands to make new autofilled divs
 
-# below: trying to format with {0}
-def fillInIds(paradots):
-	withids = ''
-	for t in range(50):
-		withids += paradots[t].format(allyears[t])
-	return withids
+dataforparas = [(h, c) for h, c in zip(hreflist, classes)] # len 268, tuples to fill in "makeParas" fxn
 
-dotswithids = fillInIds(paradots)
+paradots = dot_funcs.makeParas(dataforparas) # len 268, <p> w/ classes & hrefs filled in
+
+finaldots = dot_funcs.fullDivs(fullyears, paradots) # str of full divs ready to be written to html
 
 
-finaldots = dot_funcs.fullDivs(fullyears, paradots)
-
-
-#funcs.strToHTMLDoc('autofilled-dots-2', finaldots)
-#print(finaldots)
+funcs.strToHTMLDoc('autofilled-dots-3', finaldots)
