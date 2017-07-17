@@ -1,0 +1,638 @@
+/* Sidebar Table of Contents:
+  1. skeleton................................(layout info)
+  2. sidebar..........(skeleton, visuals for each element)
+  3. main.............(skeleton, visuals for each element)
+*/
+
+/* 1. skeleton ****************************************************************/
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  font-size: 100%;
+  /* grid info: */
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: 1fr 10rem;
+  grid-template-areas: "main sidebar";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  grid-area: main;
+}
+
+.sidebar {
+  height: 100%;
+  width: 10rem;
+  position: fixed; /* solves scrollbar issue */
+  top: 0;
+  right: 0;
+
+}
+
+
+/* 2. sidebar **************************************************************/
+
+/* 2a. skeleton */
+.sidebar {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3rem 1fr 1rem;
+  grid-template-areas: '.'
+                       "small-timeline"
+                       '.';
+}
+
+.tags {
+  grid-area: tags;
+}
+
+.small-timeline {
+  grid-area: small-timeline;
+}
+
+.options, .tags, .small-timeline {
+  /* border: 1px solid lightgrey; /* temporary */
+}
+
+/* 2b. styling */
+
+.sidebar {
+  background-color: rgba(255, 255, 255, .5);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+}
+.options {
+  font-size: .5rem;
+  text-align: center;
+  padding-top: .5rem;
+}
+
+.tags p {
+  display: inline-block;
+  padding: 2px;
+  margin: 2px;
+  border: .5px solid purple;
+  background-color: lavender;
+  border-radius: 1rem;
+  font-size: .5rem;
+}
+
+/* lil timeline */
+.small-timeline {
+  display: grid;
+  grid-template-rows: 2.25rem .5rem repeat(199, auto) 5px; /* do 2 columns so you can have the years on the edge */
+  position: relative;
+}
+.line {
+  z-index: -1;
+  position: absolute;
+  margin-left: 50%;
+  transform: translate(-1px, 0);
+  height: 100%;
+  width: 1px;
+  background-color: rgba(0,0,0,.5);
+}
+.admin, .student, .fed, .none { /* dots */       /* full size screen only!!! */
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  margin: .25px 1.5px;
+  padding: 0px;
+  font-size: .5rem;
+  font-weight: bold;
+}
+.none {
+  height: 1px;
+  margin: 0px;
+}
+.admin:hover, .student:hover, .fed:hover {
+  background-color: yellow;
+  border: 2px solid yellow;
+  box-sizing: content-box;
+}
+.small-timeline div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admin {
+  background-color: #bae397;
+}
+.student {
+  background-color: purple;
+}
+.fed {
+  background-color: #807615;
+}
+.none {
+  background-color: transparent;
+}
+
+/* 2. main ********************************************************************/
+
+/* 2a. skeleton
+.main {
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(auto, auto);
+  grid-template-columns: [col1-start] 12.5vw [col1-end col2-start] 1fr [col2-end];
+}
+
+.main p {
+  padding: 20px;
+}
+
+ 2b. styling */
+
+
+/* Main Table of Contents
+  1. defaults................(background, font, font sizes)
+  2. topnav..................(details)
+  3. splash..................(details)
+  4. entry container.........(skeleton, visuals)
+*/
+
+
+body {
+  width: 100%;
+  background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);  background-attachment: fixed, fixed;
+  margin: 0;
+}
+/* @media screen and (min-width: 900px) {
+  body {
+    background-image: linear-gradient(to right, #6f256f -10%, rgba(255, 255, 255, 0), #6f256f 110%), url(../img/paper.jpg);
+
+  }
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+h3 {
+  font-weight: normal;
+}
+p {
+  font-size: 1rem;
+}
+
+/*2. top menu*/
+
+/* fixed menu - want animation so that it slides out if you scroll up, otherwise hidden once begin scrolling */
+/* gradient: from top, do white opaque to 0 to opaque to 0 again - want the very top to be white, not purple */
+
+menu {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  padding: 0 4px;
+  width: 100%;
+  height: 7.5vh; /* resizing messes up the borders - do in rem instead */
+  min-height: 2.25rem;
+  /* background-image: linear-gradient(rgba(41, 41, 86, 1), rgba(41, 41, 86, 1)), url(../img/repeating-news.jpg); */
+  background-color: rgba(255, 255, 255, .8);
+  border-bottom: .5px solid white;
+  z-index: 20;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+}
+
+#logo {
+  color: #292956;
+  display: inline-block;
+  text-decoration: none;
+  margin: 0 8px;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.item, .circle {
+  text-decoration: none;
+  height: 2.25rem;
+  width: 6rem;
+  margin: 0 5px;
+  padding: 4px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: bold;
+  text-align: center;
+  color: #292956;
+  border: 2px #292956 solid;
+  text-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+}
+.item:hover {
+    /* background-image: linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg); */
+    color: white;
+    background-color: #292956;
+    border: 2px /* rgba(255, 255, 255, .8) */ solid white;
+}
+.circle-container {
+  margin-left: auto;
+}
+
+.circle {
+  display: inline-block;
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 50%;
+  margin: 2px 4px;
+  padding: 4px;
+  text-align: center;
+  background-color: white;
+  border: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+
+
+/* splash page */
+header {
+  width: 100%;
+  height: 150vh;
+  margin: 0;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%), linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg);
+}
+.splash span {
+  font-size: 3rem;
+  margin: 0;
+  color: white;
+  text-shadow: 0 0 1px rgba(0, 0, 0, .05);
+}
+
+
+.splash {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 150vh;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%), linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg);
+  grid-template-areas: "admin2 admin2 admin2 arrows1"
+                       "arrows2 response response ."
+                       "....  ....  ....  arrowsdown";
+}
+.admin2, .arrows1, .arrows2, .response, .arrowsdown {
+  margin: 0;
+  padding: 0 10px;
+}
+.admin2 {
+  grid-area: admin2;
+}
+.arrows1 {
+  grid-area: arrows1;
+}
+.arrows2 {
+  grid-area: arrows2;
+}
+.response {
+  grid-area: response;
+}
+.arrowsdown {
+  grid-area: arrowsdown;
+  transform: rotate(90deg);
+}
+@media screen and (min-width: 900px) {
+  .splash span {
+    font-size: 5rem;
+  }
+}
+/* explainer - full-size screen; handle mobile (vertical) later */
+.explainer {
+  display: grid;
+  grid-template-areas: "hook     hook      hook"
+                       "reason1 reason2 reason3"
+                       "circle1 circle2 circle3";
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: center;
+  margin: 0;
+  padding: 2.5vh 0;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+.hook {
+  grid-area: hook;
+  border: 1px olive solid;
+  height: 25vh;
+  margin: 2rem 0;
+  width: 100%;
+}
+.reason1, .reason2, .reason3 {
+  height: 7rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 3.5rem;
+}
+.reason1 {
+  grid-area: reason1;
+  border: 1px white solid;
+}
+.reason2 {
+  grid-area: reason2;
+  background-color: white;
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+}
+.reason3 {
+  grid-area: reason3;
+  border: 1px white solid;
+}
+.circle1, .circle2, .circle3 {
+  background-color: rgba(255, 255, 255, .8);
+  width: 20rem;
+  height: 20rem;
+  /* small = width: 30vh;
+  height: 30vh; */
+  border-radius: 50%;
+  justify-self: center;
+}
+.circle1 p {
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+.circle1 {
+  grid-area: circle1;
+}
+.circle2 {
+  grid-area: circle2;
+}
+.circle3 {
+  grid-area: circle3;
+}
+
+/* ----- 4. container skeleton -------------------------------------- */
+
+.container {
+  margin: auto 3rem auto 1rem;
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-flow: row;
+  grid-auto-rows: minmax(10px, auto);
+  grid-template-columns: [col1-start] 12.5vw [col1-end col2-start] 1fr [col2-end];
+}
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+.entry {
+  grid-column: col2-start;
+}
+
+.tl-wrapper {
+  grid-column: col1-start;
+  justify-self: center;
+}
+.date {
+  grid-column: col1-start;
+}
+/* @media all and (min-width: 900px) {
+  .container {
+    margin: auto 2rem;
+    display: grid;
+    grid-gap: 10px;
+    grid-auto-flow: row dense;
+    grid-auto-rows: minmax(10px, auto);
+    grid-template-columns: [oe-start ed-start] 1fr [oe-end ed-end tl-start] 12.5vw [tl-end ee-start od-start] 1fr [ee-end od-end];
+    /* key: 'oe'='odd entry'  'ed'='even date'  'tl'='timeline'  'ee'='even entry'  'od'='odd date'
+  }
+} */
+
+/* ----- grid item placement: ----------------------------- */
+
+/* @media screen and (min-width: 900px) {
+  .header {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .entry.odd {
+    grid-column: oe-start;
+  }
+  .entry.even {
+    grid-column: ee-start;
+  }
+
+  .tl-wrapper {
+    grid-column: 2; /* 1 for small screens
+    justify-self: center;
+  } /* holds timeline/icons
+  .date.odd {
+    grid-column: od-start;
+  }
+  .date.even {
+    grid-column: ed-start;
+    text-align: right;
+  }
+} */
+
+/* --------------------- 4b. entry visuals: ------------------------ */
+
+/* Table of Contents:   (1).........header            (insert line numbers soon)
+                        (2)....line itself
+                        (3)...........icon
+                        (4)........entries
+                        (5)...........date
+                        (6).........footer                                    */
+
+/* 1. header */
+.header {
+  text-align: center;
+  order: -1;
+  margin-bottom: 3em;
+}
+
+/* 2. line */
+.dots {
+  grid-column: col1-start;
+  justify-self: center;
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  transform: translate(-2px, 0);
+  background-color: purple;
+}
+/* @media screen and (min-width: 900px) {
+  .dots {
+    grid-column: 1 / -1;
+    justify-self: center;
+    height: 4px;
+    width: 4px;
+    border-radius: 50%;
+    transform: translate(-2px, 0);
+    background-color: purple;
+  }
+} */
+
+p[class="dots"]:nth-of-type(1) {
+  opacity: .5;
+}
+p[class="dots"]:nth-of-type(2) {
+  opacity: .7;
+}
+p[class="dots"]:nth-of-type(3) {
+  opacity: .9;
+}
+
+.timeline {
+  width: 4px;
+  transform: translate(-2px, 0);
+  height: 120%;
+  background-color: #6f256f;
+  margin-top: 0;
+  margin-bottom: -10px; /* change margins for 1st and last of type */
+  z-index: -10;
+}
+.container div:nth-of-type(2) {
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  margin-top: -30px;
+} /* ^hacky fix. Consult StackOverflow solution: .parent > .class ~ .class {}, is in bookmarks  */
+.container div:nth-last-of-type(4) {
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  height: 110%;
+} /* hacky fix that requires numbers */
+
+
+
+/* 3. icon */
+.icon { /* circle */
+  transform: translate(-50%, 0);
+  margin-left: 2px; /* compensate for centering timeline itself - is inside the div */
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid #6f256f;
+  z-index: 10;
+}
+.icon img { /* pic */
+  height: 1.5rem;
+  width: 1.5rem;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media screen and (min-width: 1024px) { /* full-size screen */
+  .icon {
+    height: 4rem;
+    width: 4rem;
+  }
+  .icon img {
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+/* ------- 4. entry blocks ----------- */
+
+.entry {
+  position: relative;
+  padding: 1.5rem 2rem;
+  background-color: rgba(255, 255, 255, 1);
+  text-align: left;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+}
+.entry::before { /* arrow */
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  right: 100%;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-right: 7px solid white;
+}
+/* @media only screen and (min-width: 900px) {
+  .entry.odd::before { /* odd arrow
+    top: 2rem;
+    left: 100%;
+    transform: translate(0, -50%);
+    border-color: transparent;
+    border-left-color: white;
+  }
+} */
+
+/* ------ 4b. text -------------- */
+
+.entry h1, .entry h2, .entry h3 {
+  margin: 0;
+}
+/* change sizes for lil screens!!! */
+.entry h2 { /* entry title */
+  color: #292956;
+  font-size: 1.5rem;
+}
+.entry h3 { /* entry subtitle */
+  color: #292956;
+  font-size: 1rem;
+  font-family: 'Roboto Slab', serif;
+}
+.entry p {
+  margin: 1em 0;
+  line-height: 1.6; /* make 1 or 1.15 for lil screens */
+}
+
+/*---------------------- 5. date ------------------------- */
+
+.date {
+  visibility: hidden;
+}
+
+/* @media screen and (min-width: 900px) {
+  .date {
+    visibility: visible;
+    font-size: 1rem;
+    height: 3rem;
+    line-height: 3rem; /* same as icon height */
+  /*  width: auto;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .date {
+    height: 4rem;
+    line-height: 4rem;
+  }
+}
+
+/* ----------------- 6. footer ------------------- */
+
+p[class="dots"]:nth-last-of-type(1) {
+  opacity: .5;
+}
+p[class="dots"]:nth-last-of-type(2) {
+  opacity: .7;
+}
+p[class="dots"]:nth-last-of-type(3) {
+  opacity: .9;
+}
+
+.footer {
+  text-align: center;
+  grid-column: 1 / -1;
+  order: 2;
+}
