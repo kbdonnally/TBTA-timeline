@@ -6,10 +6,12 @@
 
 /* 1. skeleton ****************************************************************/
 
+* {
+  box-sizing: border-box;
+}
 html {
   height: 100%;
 }
-
 body {
   height: 100%;
   margin: 0px;
@@ -20,30 +22,43 @@ body {
   display: grid;
   grid-gap: 0px;
   grid-template-columns: 1fr 10rem;
+  grid-auto-flow: column;
+  grid-auto-rows: minmax(4px, auto);
   grid-template-areas: "main sidebar";
 }
-
-* {
-  box-sizing: border-box;
-}
-
-.main {
-  grid-area: main;
-}
-
 .sidebar {
+  grid-area: sidebar;
   height: 100%;
   width: 10rem;
   position: fixed; /* solves scrollbar issue */
   top: 0;
   right: 0;
-
+}
+.main {
+  grid-area: main;
+  display: grid; /* NB: flex better? */
+  grid-template-columns: 1fr;
+  grid-template-areas: "splash"
+                       "explainer"
+                       "container" /* for entries */
+                       "footer"
+}
+.splash {
+  grid-area: splash;
+}
+.explainer {
+  grid-area: explainer;
+}
+.container {
+  grid-area: container;
+}
+.footer {
+  grid-area: footer;
 }
 
+/* #. sidebar **************************************************************/
 
-/* 2. sidebar **************************************************************/
-
-/* 2a. skeleton */
+/* #a. skeleton */
 .sidebar {
   display: grid;
   grid-template-columns: 1fr;
@@ -52,17 +67,11 @@ body {
                        "small-timeline"
                        '.';
 }
-
 .tags {
   grid-area: tags;
 }
-
 .small-timeline {
   grid-area: small-timeline;
-}
-
-.options, .tags, .small-timeline {
-  /* border: 1px solid lightgrey; /* temporary */
 }
 
 /* 2b. styling */
@@ -90,7 +99,7 @@ body {
 /* lil timeline */
 .small-timeline {
   display: grid;
-  grid-template-rows: 2.25rem .5rem repeat(199, auto) 5px; /* do 2 columns so you can have the years on the edge */
+  grid-template-rows: .5rem repeat(199, auto) 5px; /* do 2 columns so you can have the years on the edge */
   position: relative;
 }
 .line {
@@ -603,5 +612,4 @@ p[class="dots"]:nth-last-of-type(3) {
 .footer {
   text-align: center;
   grid-column: 1 / -1;
-  order: 2;
 }
