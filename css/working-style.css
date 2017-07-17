@@ -1,4 +1,4 @@
-/* Sidebar Table of Contents:
+/* Table of Contents:
   1. skeleton................................(layout info)
   2. sidebar..........(skeleton, visuals for each element)
   3. main.............(skeleton, visuals for each element)
@@ -23,7 +23,7 @@ body {
   grid-gap: 0px;
   grid-template-columns: 1fr 10rem;
   grid-auto-flow: column;
-  grid-auto-rows: minmax(4px, auto);
+  grid-auto-rows: minmax(1rem, auto);
   grid-template-areas: "main sidebar";
 }
 .sidebar {
@@ -56,51 +56,30 @@ body {
   grid-area: footer;
 }
 
-/* #. sidebar **************************************************************/
+/* 2. sidebar *****************************************************************/
 
-/* #a. skeleton */
+/* 2a. skeleton */
 .sidebar {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3rem 1fr 1rem;
-  grid-template-areas: '.'
+  grid-template-rows: 2rem 1fr 1.5rem;
+  grid-template-areas: '.' /* add filter here */
                        "small-timeline"
                        '.';
-}
-.tags {
-  grid-area: tags;
 }
 .small-timeline {
   grid-area: small-timeline;
 }
+.small-timeline {
+  display: grid;
+  grid-template-rows: 5px repeat(199, auto) 5px; /* do 2 columns so you can have the years on the edge */
+  position: relative;
+}
 
-/* 2b. styling */
-
+/* 2b. visuals */
 .sidebar {
   background-color: rgba(255, 255, 255, .5);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
-}
-.options {
-  font-size: .5rem;
-  text-align: center;
-  padding-top: .5rem;
-}
-
-.tags p {
-  display: inline-block;
-  padding: 2px;
-  margin: 2px;
-  border: .5px solid purple;
-  background-color: lavender;
-  border-radius: 1rem;
-  font-size: .5rem;
-}
-
-/* lil timeline */
-.small-timeline {
-  display: grid;
-  grid-template-rows: .5rem repeat(199, auto) 5px; /* do 2 columns so you can have the years on the edge */
-  position: relative;
 }
 .line {
   z-index: -1;
@@ -111,7 +90,7 @@ body {
   width: 1px;
   background-color: rgba(0,0,0,.5);
 }
-.admin, .student, .fed, .none { /* dots */       /* full size screen only!!! */
+.admin, .student, .fed, .none { /*dots*/
   height: 5px;
   width: 5px;
   border-radius: 50%;
@@ -147,17 +126,18 @@ body {
   background-color: transparent;
 }
 
-/* 2. main ********************************************************************/
+/* 3. main ********************************************************************/
 
-
-/* Main Table of Contents
-  1. defaults................(background, font, font sizes)
-  2. topnav..................(details)
-  3. splash..................(details)
-  4. entry container.........(skeleton, visuals)
+/* Table of Contents:
+  a. body......................(default visuals)
+  b. topnav..................(skeleton, visuals)
+  c. splash..................(skeleton, visuals)
+  d. explainer...............(skeleton, visuals)
+  e. entries.................(skeleton, visuals)
+  f. footer...........................(skeleton)
 */
 
-
+/* 3a. body */
 body {
   width: 100%;
   background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);
@@ -190,11 +170,9 @@ p {
   font-size: 1rem;
 }
 
-/*2. top menu*/
-
-/* fixed menu - want animation so that it slides out if you scroll up, otherwise hidden once begin scrolling */
-/* gradient: from top, do white opaque to 0 to opaque to 0 again - want the very top to be white, not purple */
-
+/*3b. top menu*/
+/* NB: make fixed menu - want animation so that it slides out if you scroll up,
+otherwise hidden once begin scrolling */
 menu {
   display: flex;
   align-items: center;
@@ -211,7 +189,6 @@ menu {
   z-index: 20;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
 }
-
 #logo {
   color: #292956;
   display: inline-block;
@@ -220,7 +197,6 @@ menu {
   font-weight: bold;
   font-size: 2rem;
 }
-
 .item, .circle {
   text-decoration: none;
   height: 2.25rem;
@@ -243,7 +219,6 @@ menu {
 .circle-container {
   margin-left: auto;
 }
-
 .circle {
   display: inline-block;
   height: 2.25rem;
@@ -257,9 +232,7 @@ menu {
   font-family: 'Raleway', sans-serif;
 }
 
-
-
-/* splash page */
+/*3c. splash*/
 header {
   width: 100%;
   height: 150vh;
@@ -272,8 +245,6 @@ header {
   color: white;
   text-shadow: 0 0 1px rgba(0, 0, 0, .05);
 }
-
-
 .splash {
   display: grid;
   align-content: center;
@@ -310,7 +281,8 @@ header {
     font-size: 5rem;
   }
 }
-/* explainer - full-size screen; handle mobile (vertical) later */
+
+/*3d. explainer*/
 .explainer {
   display: grid;
   grid-template-areas: "hook     hook      hook"
@@ -376,8 +348,8 @@ header {
   grid-area: circle3;
 }
 
-/* ----- 4. container skeleton -------------------------------------- */
-
+/*3e. container*/
+/*skeleton*/
 .container {
   margin: auto 3rem auto 1rem;
   display: grid;
@@ -435,23 +407,13 @@ header {
   }
 }
 
-/* --------------------- 4b. entry visuals: ------------------------ */
-
-/* Table of Contents:   (1).........header            (insert line numbers soon)
-                        (2)....line itself
-                        (3)...........icon
-                        (4)........entries
-                        (5)...........date
-                        (6).........footer                                    */
-
-/* 1. header */
+/*visuals*/
 .header {
   text-align: center;
   order: -1;
   margin-bottom: 3em;
 }
 
-/* 2. line */
 .dots {
   grid-column: col1-start;
   justify-self: center;
@@ -472,7 +434,6 @@ header {
     background-color: purple;
   }
 }
-
 p[class="dots"]:nth-of-type(1) {
   opacity: .5;
 }
@@ -482,30 +443,37 @@ p[class="dots"]:nth-of-type(2) {
 p[class="dots"]:nth-of-type(3) {
   opacity: .9;
 }
+p[class="dots"]:nth-last-of-type(1) {
+  opacity: .5;
+}
+p[class="dots"]:nth-last-of-type(2) {
+  opacity: .7;
+}
+p[class="dots"]:nth-last-of-type(3) {
+  opacity: .9;
+}
 
-.timeline {
+.timeline { /*line wraps icon*/
   width: 4px;
   transform: translate(-2px, 0);
   height: 120%;
   background-color: #6f256f;
   margin-top: 0;
-  margin-bottom: -10px; /* change margins for 1st and last of type */
+  margin-bottom: -10px;
   z-index: -10;
 }
-.container div:nth-of-type(2) {
-  border-top-right-radius: 2px;
-  border-top-left-radius: 2px;
-  margin-top: -30px;
-} /* ^hacky fix. Consult StackOverflow solution: .parent > .class ~ .class {}, is in bookmarks  */
-.container div:nth-last-of-type(4) {
+.container div:nth-last-of-type(3) { /* rounds line bottom */
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
-  height: 110%;
-} /* hacky fix that requires numbers */
+  height: 100%;
+}
+.container div:nth-last-of-type(2) { /* remove overlap b/t line + dots*/
+  margin-bottom: 1rem;
+}
 
 .icon {
   transform: translate(-50%, 0);
-  margin-left: 2px; /* compensate for centering timeline itself - is inside the div */
+  margin-left: 2px;
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
@@ -563,19 +531,18 @@ p[class="dots"]:nth-of-type(3) {
 .entry h2, .entry h3 {
   margin: 0;
 }
-/* change sizes for lil screens!!! */
-.entry h2 { /* entry title */
+.entry h2 {
   color: #292956;
   font-size: 1.5rem;
 }
-.entry h3 { /* entry subtitle */
+.entry h3 {
   color: #292956;
   font-size: 1rem;
   font-family: 'Roboto Slab', serif;
 }
 .entry p {
   margin: 1em 0;
-  line-height: 1.6; /* make 1 or 1.15 for lil screens */
+  line-height: 1.6; /* 1 or 1.15 for lil screens */
 }
 
 .date {
@@ -597,18 +564,7 @@ p[class="dots"]:nth-of-type(3) {
   }
 }
 
-/* ----------------- 6. footer ------------------- */
-
-p[class="dots"]:nth-last-of-type(1) {
-  opacity: .5;
-}
-p[class="dots"]:nth-last-of-type(2) {
-  opacity: .7;
-}
-p[class="dots"]:nth-last-of-type(3) {
-  opacity: .9;
-}
-
+/*3f. footer*/
 .footer {
   text-align: center;
   grid-column: 1 / -1;
