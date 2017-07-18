@@ -139,18 +139,11 @@ body {
 
 /* 3a. body */
 body {
+  background-image: url(../img/paper.jpg);
+  background-attachment: fixed;
   width: 100%;
-  background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%), url(../img/paper.jpg);
-  background-attachment: fixed, fixed;
   margin: 0;
 }
-/* @media screen and (min-width: 900px) {
-  body {
-    background-image: linear-gradient(to right, #6f256f -10%, rgba(255, 255, 255, 0), #6f256f 110%), url(../img/paper.jpg);
-
-  }
-} */
-
 * {
   box-sizing: border-box;
 }
@@ -170,193 +163,22 @@ p {
   font-size: 1rem;
 }
 
-/*3b. top menu*/
-/* NB: make fixed menu - want animation so that it slides out if you scroll up,
-otherwise hidden once begin scrolling */
-menu {
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  margin: 0;
-  padding: 0 4px;
-  width: 100%;
-  height: 7.5vh; /* resizing messes up the borders - do in rem instead */
-  min-height: 2.25rem;
-  /* background-image: linear-gradient(rgba(41, 41, 86, 1), rgba(41, 41, 86, 1)), url(../img/repeating-news.jpg); */
-  background-color: rgba(255, 255, 255, .8);
-  border-bottom: .5px solid white;
-  z-index: 20;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
-}
-#logo {
-  color: #292956;
-  display: inline-block;
-  text-decoration: none;
-  margin: 0 8px;
-  font-weight: bold;
-  font-size: 2rem;
-}
-.item, .circle {
-  text-decoration: none;
-  height: 2.25rem;
-  width: 6rem;
-  margin: 0 5px;
-  padding: 4px;
-  font-family: 'Roboto Slab', serif;
-  font-weight: bold;
-  text-align: center;
-  color: #292956;
-  border: 2px #292956 solid;
-  text-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
-}
-.item:hover {
-    /* background-image: linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg); */
-    color: white;
-    background-color: #292956;
-    border: 2px /* rgba(255, 255, 255, .8) */ solid white;
-}
-.circle-container {
-  margin-left: auto;
-}
-.circle {
-  display: inline-block;
-  height: 2.25rem;
-  width: 2.25rem;
-  border-radius: 50%;
-  margin: 2px 4px;
-  padding: 4px;
-  text-align: center;
-  background-color: white;
-  border: none;
-  font-family: 'Raleway', sans-serif;
-}
-
-/*3c. splash*/
-header {
-  width: 100%;
-  height: 150vh;
-  margin: 0;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%), linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg);
-}
-.splash span {
-  font-size: 3rem;
-  margin: 0;
-  color: white;
-  text-shadow: 0 0 1px rgba(0, 0, 0, .05);
-}
-.splash {
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  width: 100%;
-  height: 150vh;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 90%), linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url(../img/dustbowl-collage.jpg);
-  grid-template-areas: "admin2 admin2 admin2 arrows1"
-                       "arrows2 response response ."
-                       "....  ....  ....  arrowsdown";
-}
-.admin2, .arrows1, .arrows2, .response, .arrowsdown {
-  margin: 0;
-  padding: 0 10px;
-}
-.admin2 {
-  grid-area: admin2;
-}
-.arrows1 {
-  grid-area: arrows1;
-}
-.arrows2 {
-  grid-area: arrows2;
-}
-.response {
-  grid-area: response;
-}
-.arrowsdown {
-  grid-area: arrowsdown;
-  transform: rotate(90deg);
-}
-@media screen and (min-width: 900px) {
-  .splash span {
-    font-size: 5rem;
-  }
-}
-
-/*3d. explainer*/
-.explainer {
-  display: grid;
-  grid-template-areas: "hook     hook      hook"
-                       "reason1 reason2 reason3"
-                       "circle1 circle2 circle3";
-  grid-template-columns: 1fr 1fr 1fr;
-  align-content: center;
-  margin: 0;
-  padding: 2.5vh 0;
-  height: 100vh;
-  width: 100%;
-  background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-}
-.hook {
-  grid-area: hook;
-  border: 1px olive solid;
-  height: 25vh;
-  margin: 2rem 0;
-  width: 100%;
-}
-.reason1, .reason2, .reason3 {
-  height: 7rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  font-size: 3.5rem;
-}
-.reason1 {
-  grid-area: reason1;
-  border: 1px white solid;
-}
-.reason2 {
-  grid-area: reason2;
-  background-color: white;
-  border-left: 3px solid black;
-  border-right: 3px solid black;
-}
-.reason3 {
-  grid-area: reason3;
-  border: 1px white solid;
-}
-.circle1, .circle2, .circle3 {
-  background-color: rgba(255, 255, 255, .8);
-  width: 20rem;
-  height: 20rem;
-  /* small = width: 30vh;
-  height: 30vh; */
-  border-radius: 50%;
-  justify-self: center;
-}
-.circle1 p {
-  border-radius: 50%;
-  position: relative;
-  top: 50%;
-  transform: translate(0%, -50%);
-}
-.circle1 {
-  grid-area: circle1;
-}
-.circle2 {
-  grid-area: circle2;
-}
-.circle3 {
-  grid-area: circle3;
-}
-
 /*3e. container*/
 /*skeleton*/
 .container {
-  margin: auto 3rem auto 1rem;
+  margin: auto 0;
+  background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%);
+  z-index: -1;
   display: grid;
   grid-gap: 10px;
   grid-auto-flow: row;
   grid-auto-rows: minmax(10px, auto);
   grid-template-columns: [col1-start] 12.5vw [col1-end col2-start] 1fr [col2-end];
+}
+@media screen and (min-width: 900px) {
+  .container {
+    background-image: linear-gradient(to right, #6f256f -40%, rgba(255, 255, 255, 0), #6f256f 140%);
+  }
 }
 .header {
   grid-column: 1 / -1;
@@ -376,7 +198,7 @@ header {
 }
 @media all and (min-width: 900px) {
   .container {
-    margin: auto 2rem;
+    margin: auto 0;
     display: grid;
     grid-gap: 10px;
     grid-auto-flow: row dense;
@@ -503,6 +325,7 @@ p[class="dots"]:nth-last-of-type(3) {
 .entry {
   position: relative;
   padding: 1.5rem 2rem;
+  margin: 0 2rem 0 1rem;
   background-color: rgba(255, 255, 255, 1);
   text-align: left;
   border-radius: 3px;
@@ -519,6 +342,12 @@ p[class="dots"]:nth-last-of-type(3) {
   border-right: 7px solid white;
 }
 @media only screen and (min-width: 900px) {
+  .entry.even {
+    margin: 0 3rem 0 0;
+  }
+  .entry.odd {
+    margin: 0 0 0 3rem;
+  }
   .entry.odd::before { /* odd arrow */
     top: 2rem;
     left: 100%;
@@ -527,6 +356,32 @@ p[class="dots"]:nth-last-of-type(3) {
     border-left-color: white;
   }
 }
+.entry-flex {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.triangle-top {
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  shape-outside: polygon(0 0, 100% 0, 0 100%);
+  width: 100%;
+  height: 100%;
+  margin: -1.5rem -2rem;
+  float: left;
+}
+.triangle-bottom {
+  clip-path: polygon(100% 100%, 100% 0, 0 100%);
+  shape-outside: polygon(100% 100%, 100% 0, 0 100%);
+  width: 15rem;
+  height: 15rem;
+  margin: -1.5rem -2rem;
+  float: right;
+  background-image: url(../img/test-1.jpg);
+  background-size: cover;
+}
+
+
+
 
 .entry h2, .entry h3 {
   margin: 0;
