@@ -80,7 +80,6 @@ body {
 
 
 .preview-text, .title, .link {
-  display: inline-block;
   width: 30%;
   border: 1px solid blue;
   /*margin: .5rem 0;*/
