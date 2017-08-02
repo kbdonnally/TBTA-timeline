@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 100%;
+  margin: 0;
+}
+
+div {
+  height: 100vh;
+  width: 80%;
+  font-family: 'Garamond', serif;
+  font-size: 4rem;
+  text-align: center;
+  line-height: 8rem;
+  margin: 1rem auto;
+  color: white;
+}
+
+/* beautiful solution!!! https://codyhouse.co/gem/alternate-fixed-scroll-backgrounds/ */
+
+/* ooh okay also this is exactly what I had in mind, except that after you scroll you
+can't re-access the content from before (can't re-access the splash page, which is annoying)
+url: https://www.webdesignerdepot.com/2014/05/how-to-create-a-scrollable-splash-screen-with-css3-and-jquery/ */

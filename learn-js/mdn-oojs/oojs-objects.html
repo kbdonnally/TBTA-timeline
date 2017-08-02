@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>OOJS Lesson 2</title>
+  </head>
+
+  <body>
+    <div>
+      <label for="jscode">Enter code:</label>
+      <input type="text" id="jscode">
+      <button>Submit code</button>
+    </div>
+
+    <p></p>
+  </body>
+
+<script>
+  var input = document.querySelector('input');
+  var btn = document.querySelector('button');
+  var para = document.querySelector('p');
+
+  btn.onclick = function() {
+    var code = input.value;
+    para.textContent = eval(code);
+  }
+
+  function Person(first, last, age, gender, interests) {
+    this.name = {
+      first,
+      last
+    };
+    this.age = age;
+    this.gender = gender; // irl write loop for female/male = s/he, other
+    // or make separate variable 'this.pronoun'
+    this.interests = interests;
+
+    this.listOfInterests = function() {
+      var str = '';
+      var num = this.interests.length;
+      for (i=0; i < num-1; i++) {
+        str += this.interests[i] + ', ';
+      }
+      str += 'and ' + this.interests[num - 1];
+      return str;
+    }; /* lists all interests in bio regardless of how many */
+
+    this.bio = function() {
+      alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old.' + ' S/he' + ' likes ' + this.listOfInterests() + '.' /*!*/)
+    }
+    this.greeting = function() {
+      alert("Hi, I'm " + this.name + "!");
+    };
+  }
+  /*instances:*/
+  var testPerson = new Person('Adam', '&Steve4Ever', 5000, 'male', ['commandments', 'goats', 'anything but Egypt, prob']);
+  var person2 = Object.create(testPerson); // 'copy' of testPerson; seems good for testing purposes
+
+  Person.prototype.farewell = function() {
+    alert(this.name.first + " has left the building. Peace out for now!");
+  };
+</script>
+</html>
