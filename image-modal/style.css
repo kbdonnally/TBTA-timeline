@@ -1,0 +1,109 @@
+body {
+  font-size: 100%;
+  margin: 0;
+  font-family: 'Century Gothic';
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* the modal (background)*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,.4);
+}
+/* 'x' button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header, .modal-footer {
+  padding: 2px 1rem;
+  background-color: #5cb85c;
+  color: white;
+}
+
+#myBtn {
+  border: 3px solid #5cb85c;
+  background-color: white;
+  color: #5cb85c;
+  margin: 10vh 10vh;
+  padding: 1rem;
+  cursor: pointer;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 2px 1rem;
+}
+
+.modal-content {
+  position: relative;
+  /*transform: translate(0,-50%);*/
+  background-color: rgba(255,255,255,.7);
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+
+  /* ^offset x offset y blur radius spread radius color */
+  animation-name: animatetop;
+  animation-duration: .7s;
+  animation-timing-function: ease-in-out;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 2fr 1fr;
+  grid-auto-rows: minmax(1rem, auto);
+  grid-template-areas: 'pic preview-text'
+              'pic title'
+              'pic link'
+}
+
+.pic {
+  grid-area: pic;
+  padding: 1rem;
+
+}
+
+/*.pic, .preview-text, .title, .link*/ .modal-content {
+  /*background-color: white;*/
+  border: 1px solid red;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+.preview-text {
+  grid-area: preview-text;
+  background-color: white;
+}
+.title {
+  grid-area: title;
+  background-color: white;
+}
+.link {
+  grid-area: link;
+  background-color: white;
+}
+
+@keyframes animatetop {
+  from {left: -300px; opacity: 0}
+  to {left: 0; opacity: 1}
+}
