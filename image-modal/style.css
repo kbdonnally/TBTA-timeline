@@ -76,6 +76,10 @@ body {
   height: auto;
   margin: 1rem;
 }
+.num-msg {
+  color: purple;
+  text-align: center;
+}
 
 .preview-text, .title, .link {
   box-sizing: border-box;
