@@ -1,7 +1,7 @@
 body {
   font-size: 100%;
   margin: 0;
-  font-family: 'Century Gothic';
+  font-family: 'Raleway';
 }
 
 * {
@@ -27,6 +27,7 @@ body {
   float: right;
   font-size: 1.75rem;
   font-weight: bold;
+  margin: 0;
 }
 
 .close:hover, .close:focus {
@@ -35,20 +36,14 @@ body {
   cursor: pointer;
 }
 
-.modal-header, .modal-footer {
-  padding: 2px 1rem;
-  background-color: #5cb85c;
-  color: white;
-}
-
 #myBtn {
-  border: 3px solid #5cb85c;
+  border: 2px solid #bae397;
   background-color: white;
-  color: #5cb85c;
-  margin: 10vh 10vh;
-  padding: 1rem;
+  color: #bae397;
+  margin: 1rem;
+  padding: 1rem 2rem;
   cursor: pointer;
-  font-family: 'Century Gothic', sans-serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
 }
@@ -59,50 +54,42 @@ body {
 
 .modal-content {
   position: relative;
-  /*transform: translate(0,-50%);*/
+  box-sizing: content-box;
   background-color: rgba(255,255,255,1);
   margin: auto;
   padding: 0;
   border: 1px solid #888;
   width: 75%;
-  height: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
   /* ^offset x offset y blur radius spread radius color */
   animation-name: animatetop;
   animation-duration: .7s;
   animation-timing-function: ease-in-out;
   display: flex;
-  flex-flow: column wrap;
-  align-content: space-between;
+  align-content: center;
   justify-content: space-between;
-  padding: 1rem;
 }
 
-
+.pic {
+  padding: 1rem;
+  border: 2px solid #bae397;
+  height: auto;
+  margin: 1rem;
+}
 
 .preview-text, .title, .link {
-  width: 30%;
-  border: 1px solid blue;
-  /*margin: .5rem 0;*/
-  padding: .5rem;
-}
-.modal-content {
-  box-sizing: content-box;
-  border: 1px solid red;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
-}
-.pic {
-  width: auto;
+  box-sizing: border-box;
+  width: 100%;
+  border: 2px solid #bae397;
   padding: 1rem;
-  background: #bae397;
 }
-.preview-text {
-  background-color: white;
-}
-.title {
-  background-color: white;
-}
-.link {
-  background-color: white;
+
+.text-wrapper {
+  /*width: auto; /*30%;*/
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 @keyframes animatetop {

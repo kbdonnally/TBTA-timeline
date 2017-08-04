@@ -116,6 +116,7 @@ def createPicAlts(picnames):
 # below: html template for 1 entry in the timeline
 # 'madlibslist' = list of 112 templates
 # 7/17: added "id='14'" in template
+# 8/4: added "data-item-number='15'" in template
 template = '''
 <!--start {0} -->
 <div class="tl-wrapper timeline">
@@ -123,7 +124,7 @@ template = '''
     <img src="img/{1}.png" alt="{2}">
   </div>
 </div>
-    <div class="entry {3}" id="{14}">
+    <div class="entry {3}" id="{14}" data-item-number="{15}">
       <h2>{4}</h2>
       <h3>{5}, {6} {7}, {8}</h3>
       <p>{9}</p>

@@ -12,28 +12,36 @@
 </head>
 <body>
 
-<button id="myBtn">Open Modal</button>
-
 <div id="myModal" class="modal">
-
   <div class="modal-content">
-    <div class="pic" style="font-family:sans-serif;">
-      <img height="400px" src="../img/test-2.jpg" alt="newspaper">
-    </div>
-    <div class="title">
-      <span class="close">&times;</span>
-      <h2>Modal Header</h2>
-    </div>
-    <div class="preview-text">
-      <p>Some modal text here. Lorem ipsum dolor sic amet bleep bloop blop eighteen hundreds.</p>
-      <p>Text text text text on this day, December 19th 1872....</p>
-    </div>
-    <div class="link">
-      <h3><a href="#">Go to item</a></h3>
+    <div class="pic"></div>
+    <div class="text-wrapper">
+      <div class="title"><span class="close">&times;</span></div>
+      <div class="preview-text"></div>
+      <div class="link"><a href="#">Go to item</a></div>
     </div>
   </div>
+</div>
+
+<!--sample entry (e5)-->
+<div style="padding:2rem;border:2px solid black;margin:1rem;">
+<div class="tl-wrapper timeline">
+  <div class="icon">
+      <img height="32px" src="../img/rotunda.png" alt="Rotunda">
+  </div>
+</div>
+<div class="entry odd" id="1833">
+  <h2>Student expelled over "whoring" misconduct</h2>
+  <h3>Faculty Meeting Minutes, September 10th, 1833</h3>
+  <img height="200px" src="../img/test-2.jpg" alt="newspaper">
+  <p>"Being asked what was the nature of the charge against him, he said, he had been accused of visiting a house of ill fame - He said he had been before the Faculty of that Institution several times. He did not speak disrespectfully to Mr. Mitchell (a professor) until he conceived himself insulted - After he was dismissed by the Faculty of the University of North Carolina he says the Trustees expelled him at their next meeting."</p>
+  <button id="test">New Button</button>
+</div>
+<div class="date odd">September 1833</div>
 
 </div>
+
+<button id="myBtn">Open Modal</button>
 
 <script src="main.js"></script>
 </body>
