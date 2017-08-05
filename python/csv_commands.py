@@ -36,17 +36,19 @@ picalts = funcs.createPicAlts(picnames)
 ids = testing.idlist
 # below: new 8/4, adding item ids to divs
 itemids = modal_commands.itemids
+# below: new 8/5, adding jpg files to divs if present
+jpgs = modal_commands.matches
 
 def fillInTemplates(madlibslist):
 	newsents = ''
 	for t in range(112):
-		newsents += madlibslist[t].format(entries[t], picnames[t], picalts[t], oddeven[t], titles[t], sources[t], months[t], ordinaldays[t], years[t], texts[t], oddeven[t], months[t], years[t], entries[t], ids[t], itemids[t])
+		newsents += madlibslist[t].format(entries[t], picnames[t], picalts[t], oddeven[t], titles[t], sources[t], months[t], ordinaldays[t], years[t], texts[t], oddeven[t], months[t], years[t], entries[t], ids[t], itemids[t], jpgs[t])
 	return newsents
 
 
 filledentries = fillInTemplates(funcs.madlibslist)
 
-funcs.strToHTMLDoc('autofilled-entries-4', filledentries)
+funcs.strToHTMLDoc('autofilled-entries-5', filledentries)
 
 
 # --------- KEY: ----------

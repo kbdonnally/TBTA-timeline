@@ -9,9 +9,25 @@ urls = modal_funcs.itemURLs('hyperlinks.csv') # len 112, '' if none
 itemids = modal_funcs.splitURLs(urls) # len 112, codes like '551' from end of url 
 #NB: '' --> 'none'; freq('none') = 45 using Counter(itemids).most_common(1)
 
-#import json
-#print(json.dumps({'4': 5, '6': 7}, sort_keys=True, indent=4))
+# prints JSON-formatted string
+bothids = modal_funcs.makeObjects(entryids, itemids) # len 112
 
-objectlist = modal_funcs.makeObjects(entryids, itemids, urls) # len 112
-import json
-prettyobjects = json.dump(objectlist, open('myobjects.js', 'w'), indent=4)
+# below: matrix of line nums, item ids, and filenames
+imageinfo = modal_funcs.imageInfo('omeka_files.csv')
+# individual vectors:
+linenums = imageinfo[0]
+omeka_item_ids = imageinfo[1]
+filenames = imageinfo[2]
+
+idswithfiles = modal_funcs.itemsWithFilenames(omeka_item_ids, filenames)
+
+# below: for all item matches, return [entryid, itemid, file.name]
+filematches = modal_funcs.matchItemsWithFiles(entryids, itemids, idswithfiles)
+
+# below: jpg filenames
+jpgs = modal_funcs.normalizeFiles(filematches)
+
+matches = modal_funcs.make112(jpgs, itemids)
+
+# list of tuples, ('pic.name', 'entryid')
+zipped = [(m, str(e)) for m, e in zip(matches, entryids)] # len 112
