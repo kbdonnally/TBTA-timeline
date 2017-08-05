@@ -26,6 +26,15 @@ body {
   grid-auto-rows: minmax(1rem, auto);
   grid-template-areas: "main sidebar";
 }
+#sidebar-toggle {
+  position: fixed;
+  right: 12rem;
+  top: 50%;
+  transform: translate(0, -50%);
+  color: red;
+  font-size: 4rem;
+  display: default;
+}
 .sidebar {
   grid-area: sidebar;
   height: 100%;
@@ -356,16 +365,11 @@ p[class="dots"]:nth-last-of-type(3) {
     border-left-color: white;
   }
 }
-.entry-flex {
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-}
-/* adding: 8/5 */
+/* image & button */
 .entry img {
   display: block;
   float: left;
-  margin-right: .5rem; /* bc left float */
+  margin-right: .5rem;
   padding: 5px;
   border: 2px solid #aaa039
 }
@@ -374,7 +378,6 @@ p[class="dots"]:nth-last-of-type(3) {
   position: relative;
   display: block;
   float: left;
-  margin-bottom: 1rem;
   background-color: white;
   border: 2px solid #aaa039; /* chartreuse */
   color: #807615;
@@ -382,6 +385,7 @@ p[class="dots"]:nth-last-of-type(3) {
   font-size: 1rem;
   padding: 5px;
   padding-right: 1.5rem;
+  cursor: pointer;
 }
 .entry button:hover {
   background-color: #aaa039;
@@ -449,7 +453,7 @@ p[class="dots"]:nth-last-of-type(3) {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
+  padding-top: 4rem;
   left: 0;
   top: 0;
   width: 100%;
@@ -472,22 +476,6 @@ p[class="dots"]:nth-last-of-type(3) {
   cursor: pointer;
 }
 
-#myBtn {
-  border: 2px solid #bae397;
-  background-color: white;
-  color: #bae397;
-  margin: 1rem;
-  padding: 1rem 2rem;
-  cursor: pointer;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.modal-body {
-  padding: 2px 1rem;
-}
-
 .modal-content {
   position: relative;
   box-sizing: content-box;
@@ -495,7 +483,7 @@ p[class="dots"]:nth-last-of-type(3) {
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 75%;
+  width: 60%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
   /* ^offset x offset y blur radius spread radius color */
   animation-name: animatetop;
@@ -508,28 +496,60 @@ p[class="dots"]:nth-last-of-type(3) {
 
 .pic {
   padding: 1rem;
-  border: 2px solid #bae397;
+  border: 2px solid #aaa039;
   height: auto;
   margin: 1rem;
+  text-align: center;
+  font-family: 'Roboto Slab', serif;
+  color: #807615;
+  font-style: italic;
+  font-size: .825rem;
+  background-color: white;
 }
 .num-msg {
-  color: purple;
-  text-align: center;
+  font-style: normal;
 }
 
 .preview-text, .title, .link {
   box-sizing: border-box;
   width: 100%;
-  border: 2px solid #bae397;
+  font-family: 'Roboto Slab', serif;
+  border: 2px solid #aaa039;
+  background-color: white;
   padding: 1rem;
+  margin-top: .25rem;
+}
+.title {
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+}
+.link span {
+  border-bottom: 2px solid #aaa039;
 }
 
 .text-wrapper {
-  /*width: auto; /*30%;*/
   display: flex;
   flex-flow: column;
   justify-content: space-between;
   padding: 1rem;
+  width: 50%;
+  position: relative;
+}
+.modal::before {
+  position: absolute;
+  content: 'x';
+  right: 11rem;
+  top: 3.125rem;
+  font-size: 2rem;
+  font-weight: bold;
+  opacity: .7;
 }
 
 @keyframes animatetop {

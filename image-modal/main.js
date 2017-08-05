@@ -11,7 +11,8 @@ function grabText(e) {
     //preview text
     var para = entry.querySelector('p');
     var preview = document.getElementsByClassName('preview-text')[0];
-    preview.textContent = 'Text Preview: ' + para.textContent.substr(0, 199) + '..."';
+    // below: slow b/c innerHTML, fix if possible
+    preview.innerHTML = '<b>Text Preview:</b> ' + para.textContent.substr(0, 151) + '...';
     //title
     var h3 = entry.querySelector('h3');
     var title = document.getElementsByClassName('title')[0];
@@ -29,14 +30,23 @@ function grabText(e) {
     var link = document.getElementsByClassName('link')[0];
     link.setAttribute('href', 'http://takeback.scholarslab.org/items/show/' + num);
     //pic
-    var img = entry.querySelector('img').cloneNode();
-    img.style.height = '400px';
+    var img = entry.querySelector('img');
     var pic = document.getElementsByClassName('pic')[0];
-    pic.innerHTML = img.outerHTML + numMsg();
+    if (img !== null) {
+      var modalImage = img.cloneNode();
+      modalImage.height = '300'; // glitches if px
+      pic.innerHTML = modalImage.outerHTML + numMsg();
+      pic.style.lineHeight = 'normal';
+    }
+    else {
+      pic.innerHTML = 'No image yet exists for this event.';
+      pic.style.lineHeight = '250px';
+    }
     //container height
     var container = document.getElementsByClassName('modal-content')[0];
     var height = pic.getBoundingClientRect().height;
     container.style.height = height;
+    console.log(height);
   }
   e.stopPropagation();
 }
@@ -60,3 +70,15 @@ function closeModal(event) {
   }
 }
 window.addEventListener('click', closeModal);
+
+// lazy load images:
+// https://developers.google.com/web/updates/2016/04/intersectionobserver
+
+// sidebar toggle:
+function hideSidebar() {
+  var sidebar = document.getElementsByClassName('sidebar')[0];
+  sidebar.setAttribute('display', 'none');
+  sidebar.style.width = 0;
+}
+var toggle = document.getElementById('sidebar-toggle');
+toggle.addEventListener('click', hideSidebar);
