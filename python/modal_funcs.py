@@ -107,4 +107,20 @@ def make112(filematches, itemids):
 			matches.append('none')
 	return matches
 
+def insertInEntries(matches):
+	imgs = []
+	for i, m in enumerate(matches):
+		if m == 'none':
+			imgs.append('')
+		else:
+			imgs.append('<img src="fullsize/' + m + '" height="125px" alt="artifact scan">')
+	return imgs
 
+def insertButtons(itemids):
+	buttons = []
+	for i, item in enumerate(itemids):
+		if item == 'none':
+			buttons.append('')
+		else:
+			buttons.append('<button>Artifact Preview</button>')
+	return buttons

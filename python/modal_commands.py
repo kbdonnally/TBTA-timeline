@@ -31,4 +31,10 @@ matches = modal_funcs.make112(jpgs, itemids)
 
 # list of tuples, ('pic.name', 'entryid')
 zipped = [(m, str(e)) for m, e in zip(matches, entryids)] # len 112
-print(matches)
+
+# below: what to do in html for {16}
+imgs = modal_funcs.insertInEntries(matches)
+
+# below: what to do in html for {17} (buttons for modal)
+buttons = modal_funcs.insertButtons(itemids)
+print(buttons)

@@ -117,7 +117,7 @@ def createPicAlts(picnames):
 # 'madlibslist' = list of 112 templates
 # 7/17: added "id='14'" in template
 # 8/4: added "data-item-number='15'" in template
-# 8/5: added "data-jpg='16'" in template
+# 8/5: added "img='16'" in template, 17=buttons
 template = '''
 <!--start {0} -->
 <div class="tl-wrapper timeline">
@@ -125,11 +125,12 @@ template = '''
     <img src="img/{1}.png" alt="{2}">
   </div>
 </div>
-    <div class="entry {3}" id="{14}" data-item-number="{15}" data-jpg="{16}">
-    	<img src="../../fullsize/{16}" height="125px" alt="artifact scan">
+    <div class="entry {3}" id="{14}" data-item-number="{15}">
+      {16}
       <h2>{4}</h2>
       <h3>{5}, {6} {7}, {8}</h3>
       <p>{9}</p>
+      {17}
     </div>
 
 <div class="date {10}">{11} {12}</div>
