@@ -48,7 +48,7 @@ def fillInTemplates(madlibslist):
 
 filledentries = fillInTemplates(funcs.madlibslist)
 
-funcs.strToHTMLDoc('autofilled-entries-5', filledentries)
+funcs.strToHTMLDoc('autofilled-imgs-1', filledentries)
 
 
 # --------- KEY: ----------

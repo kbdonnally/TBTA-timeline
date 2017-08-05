@@ -55,7 +55,7 @@ body {
 .modal-content {
   position: relative;
   box-sizing: content-box;
-  background-color: rgba(255,255,255,1);
+  background-color: white;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
@@ -99,4 +99,52 @@ body {
 @keyframes animatetop {
   from {left: -300px; opacity: 0}
   to {left: 0; opacity: 1}
+}
+
+/* 8/5 */
+
+.entry img {
+  display: block;
+  float: left;
+  margin-right: .5rem; /* bc left float */
+  padding: 5px;
+  border: 2px solid #aaa039
+}
+
+.entry button {
+  position: relative;
+  display: block;
+  float: left;
+  margin-bottom: 1rem;
+  background-color: white;
+  border: 2px solid #aaa039; /* chartreuse */
+  color: #807615;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1rem;
+  padding: 5px;
+  padding-right: 1.5rem;
+}
+.entry button:hover {
+  background-color: #aaa039;
+  color: white;
+}
+.entry button::after {
+  position: absolute;
+  bottom: 0px;
+  right: -5px;
+  transform: translate(0,-50%) rotate(45deg);
+  content: '';
+  border-width: .75rem;
+  border-style: solid;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: #aaa039;
+}
+.entry button:hover::after {
+  border-bottom-color: white;
+}
+.entry button:focus {
+  outline: 0;
+  border-color: #807615; /* darkest chartreuse */
 }

@@ -126,6 +126,7 @@ template = '''
   </div>
 </div>
     <div class="entry {3}" id="{14}" data-item-number="{15}" data-jpg="{16}">
+    	<img src="../../fullsize/{16}" height="125px" alt="artifact scan">
       <h2>{4}</h2>
       <h3>{5}, {6} {7}, {8}</h3>
       <p>{9}</p>

@@ -31,3 +31,4 @@ matches = modal_funcs.make112(jpgs, itemids)
 
 # list of tuples, ('pic.name', 'entryid')
 zipped = [(m, str(e)) for m, e in zip(matches, entryids)] # len 112
+print(matches)
