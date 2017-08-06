@@ -1,7 +1,7 @@
 # csv-commands.py
 # NB: if no entry in given vector, has been replaced with 'none' or 0, depending on context
 
-import funcs, testing
+import funcs, testing, modal_commands
 
 # below: denote odd or even entry # so large screens know which way to align
 # *56 b/c len(entries) = 112
@@ -34,17 +34,23 @@ picalts = funcs.createPicAlts(picnames)
 
 # below: new 7/17, adding ids to divs
 ids = testing.idlist
+# below: new 8/4, adding item ids to divs
+itemids = modal_commands.itemids
+# below: new 8/5, adding jpg files to divs if present
+jpgs = modal_commands.matches
+imgs = modal_commands.imgs
+buttons = modal_commands.buttons
 
 def fillInTemplates(madlibslist):
 	newsents = ''
 	for t in range(112):
-		newsents += madlibslist[t].format(entries[t], picnames[t], picalts[t], oddeven[t], titles[t], sources[t], months[t], ordinaldays[t], years[t], texts[t], oddeven[t], months[t], years[t], entries[t], ids[t])
+		newsents += madlibslist[t].format(entries[t], picnames[t], picalts[t], oddeven[t], titles[t], sources[t], months[t], ordinaldays[t], years[t], texts[t], oddeven[t], months[t], years[t], entries[t], ids[t], itemids[t], imgs[t], buttons[t])
 	return newsents
 
 
 filledentries = fillInTemplates(funcs.madlibslist)
 
-funcs.strToHTMLDoc('autofilled-entries-2', filledentries)
+funcs.strToHTMLDoc('autofilled-imgs-3', filledentries)
 
 
 # --------- KEY: ----------
