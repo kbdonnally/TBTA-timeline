@@ -94,8 +94,24 @@ function showSidebar() {
 toggleOn.addEventListener('click', showSidebar);
 
 //button visibility:
-function showButton(e) {
+function showButton() {
   toggleOn.style.display = "inline";
+  test.style.borderRight = "2px solid white";
+}
+function hideButton() {
+  //setTimeout(function() {
+      test.style.borderRight = "";
+      toggleOn.style.display = "none";
+    //}, 750);
+}
+function sidebarHover() {
+  toggle.style.display = "inline";
+}
+function sidebarUnhover() {
+  toggle.style.display = "none";
 }
 var test = document.getElementById('test');
 test.addEventListener('mouseover', showButton);
+test.addEventListener('mouseout', hideButton);
+sidebar.addEventListener('mouseover', sidebarHover);
+sidebar.addEventListener('mouseout', sidebarUnhover);

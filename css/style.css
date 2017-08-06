@@ -43,9 +43,15 @@ body {
   border-radius: 50%;
 }
 #toggle {
+  display: none;
   animation-name: animatebtn;
   animation-duration: .7s;
   animation-timing-function: ease-in-out;
+  transition: right 1s ease-in-out;
+}
+#toggle:hover {
+  right: 10rem;
+  transition: none;
 }
 #toggle-on {
   display: none;
@@ -61,15 +67,22 @@ body {
   right: 0;
   height: 100%;
   width: 10px;
+  animation-name: showbutton;
+  animation-duration: .5s;
+  animation-timing-function: ease-in;
 }
 
 @keyframes animatebtn {
-  from {right: 8rem; opacity: 0}
-  to {right: 10rem; opacity: 1}
+  from {right: 8rem}
+  to {right: 10rem}
 }
 @keyframes showbutton {
   from {right: -2rem}
   to {right: 0}
+}
+@keyframes hidetoggle {
+  from {right: 10rem}
+  to {right: 8rem}
 }
 .sidebar {
   grid-area: sidebar;
@@ -107,12 +120,19 @@ body {
 
 /* 2a. skeleton */
 .sidebar {
+  /*animation-name: sidebarmove;
+  animation-duration: .7s;
+  animation-timing-function: ease; how to get things to ease off the page??? */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2rem 1fr 1.5rem;
   grid-template-areas: '.' /* add filter here */
                        "small-timeline"
                        '.';
+}
+@keyframes sidebarmove {
+  from {display: grid; opacity: 1}
+  to {display: none; opacity: 0}
 }
 .small-timeline {
   grid-area: small-timeline;
@@ -126,7 +146,6 @@ body {
 /* 2b. visuals */
 .sidebar {
   background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
 }
 .line {
   z-index: -1;
