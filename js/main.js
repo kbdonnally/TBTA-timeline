@@ -56,14 +56,14 @@ theParent.addEventListener("click", grabText);
 //open:
 var btns = document.querySelectorAll("button");
 for (var i = 0; i < btns.length; i++) {
+  if (btns[i].id ==='toggle' || btns[i].id === 'toggle-on') {
+    continue;
+  }
   btns[i].addEventListener("click", function() {
     modal.style.display = "block";
   });
 }
 //close:
-span.addEventListener('click', function() {
-  modal.style.display = "none";
-});
 function closeModal(event) {
   if (event.target == modal) { // height/width = 100%
     modal.style.display = "none";
@@ -75,10 +75,27 @@ window.addEventListener('click', closeModal);
 // https://developers.google.com/web/updates/2016/04/intersectionobserver
 
 // sidebar toggle:
+var toggle = document.getElementById('toggle');
+var toggleOn = document.getElementById('toggle-on');
+var sidebar = document.getElementsByClassName('sidebar')[0];
+var main = document.getElementsByClassName('main')[0];
 function hideSidebar() {
-  var sidebar = document.getElementsByClassName('sidebar')[0];
-  sidebar.setAttribute('display', 'none');
-  sidebar.style.width = 0;
+  main.style.marginRight = 0;
+  sidebar.style.display = "none";
+  toggle.style.display = "none";
 }
-var toggle = document.getElementById('sidebar-toggle');
 toggle.addEventListener('click', hideSidebar);
+function showSidebar() {
+  sidebar.style.display = "grid";
+  main.style.marginRight = "10rem";
+  toggle.style.display = "inline";
+  toggleOn.style.display = "none";
+}
+toggleOn.addEventListener('click', showSidebar);
+
+//button visibility:
+function showButton(e) {
+  toggleOn.style.display = "inline";
+}
+var test = document.getElementById('test');
+test.addEventListener('mouseover', showButton);

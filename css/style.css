@@ -21,19 +21,55 @@ body {
   /* grid info: */
   display: grid;
   grid-gap: 0px;
-  grid-template-columns: 1fr 10rem;
   grid-auto-flow: column;
   grid-auto-rows: minmax(1rem, auto);
-  grid-template-areas: "main sidebar";
+  grid-template-areas: "main";
 }
-#sidebar-toggle {
+
+#toggle, #toggle-on {
+  grid-area: toggle;
   position: fixed;
-  right: 12rem;
+  right: 10rem;
   top: 50%;
-  transform: translate(0, -50%);
-  color: red;
-  font-size: 4rem;
-  display: default;
+  transform: translate(50%, -50%);
+  padding-right: 2rem;
+  color: black;
+  background-color: white;
+  outline: none;
+  border: none;
+  font-size: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+#toggle {
+  animation-name: animatebtn;
+  animation-duration: .7s;
+  animation-timing-function: ease-in-out;
+}
+#toggle-on {
+  display: none;
+  position: fixed;
+  right: 0;
+  top: 50%;
+  animation-name: showbutton;
+  animation-duration: .5s;
+  animation-timing-function: ease-in;
+}
+#test {
+  position: fixed;
+  right: 0;
+  height: 100%;
+  width: 10px;
+}
+
+@keyframes animatebtn {
+  from {right: 8rem; opacity: 0}
+  to {right: 10rem; opacity: 1}
+}
+@keyframes showbutton {
+  from {right: -2rem}
+  to {right: 0}
 }
 .sidebar {
   grid-area: sidebar;
@@ -44,10 +80,12 @@ body {
   right: 0;
 }
 .main {
+  margin-right: 10rem;
   grid-area: main;
   display: grid; /* NB: flex better? */
   grid-template-columns: 1fr;
-  grid-template-areas: "splash"
+  grid-template-areas: "toggle"
+                       "splash"
                        "explainer"
                        "container" /* for entries */
                        "footer"
@@ -87,7 +125,7 @@ body {
 
 /* 2b. visuals */
 .sidebar {
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, 1);
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
 }
 .line {
