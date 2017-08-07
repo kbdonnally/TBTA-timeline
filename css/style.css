@@ -26,8 +26,14 @@ body {
   grid-template-areas: "main";
 }
 
-#toggle, #toggle-on {
-  grid-area: toggle;
+.sidebar {
+  height: 100%;
+  width: 10rem;
+  position: fixed; /* solves scrollbar issue */
+  top: 0;
+  right: 0;
+}
+.show-hide-btn {
   position: fixed;
   right: 10rem;
   top: 50%;
@@ -42,60 +48,16 @@ body {
   height: 4rem;
   border-radius: 50%;
 }
-#toggle {
-  display: none;
-  animation-name: animatebtn;
-  animation-duration: .7s;
-  animation-timing-function: ease-in-out;
-  transition: right 1s ease-in-out;
-}
-#toggle:hover {
-  right: 10rem;
-  transition: none;
-}
-#toggle-on {
-  display: none;
-  position: fixed;
-  right: 0;
-  top: 50%;
-  animation-name: showbutton;
-  animation-duration: .5s;
-  animation-timing-function: ease-in;
-}
-#test {
-  position: fixed;
-  right: 0;
-  height: 100%;
-  width: 10px;
-  animation-name: showbutton;
-  animation-duration: .5s;
-  animation-timing-function: ease-in;
-}
 
 @keyframes animatebtn {
   from {right: 8rem}
   to {right: 10rem}
 }
-@keyframes showbutton {
-  from {right: -2rem}
-  to {right: 0}
-}
-@keyframes hidetoggle {
-  from {right: 10rem}
-  to {right: 8rem}
-}
-.sidebar {
-  grid-area: sidebar;
-  height: 100%;
-  width: 10rem;
-  position: fixed; /* solves scrollbar issue */
-  top: 0;
-  right: 0;
-}
+
 .main {
   margin-right: 10rem;
   grid-area: main;
-  display: grid; /* NB: flex better? */
+  display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "toggle"
                        "splash"

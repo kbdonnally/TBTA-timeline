@@ -115,3 +115,25 @@ test.addEventListener('mouseover', showButton);
 test.addEventListener('mouseout', hideButton);
 sidebar.addEventListener('mouseover', sidebarHover);
 sidebar.addEventListener('mouseout', sidebarUnhover);
+
+// example from StackOverflow, modified:
+
+document.addEventListener('DOMContentLoaded', function() {
+  var show = document.getElementById('show-pronunciation');
+  var pron = document.querySelector('.pronunciation');
+
+  pron.style.height = pron.clientHeight;
+  pron.classList.add('hidden');
+  show.addEventListener('click', function(e) {
+    pron.classList.toggle('hidden');
+  });
+
+  [].forEach.call(document.querySelectorAll('li'), function(el, i) {
+    var dl = el.querySelector('dl');
+    dl.style.height = dl.clientHeight + 'px';
+
+    el.addEventListener('click', function() {
+      dl.classList.toggle('hidden');
+    });
+  });
+});
