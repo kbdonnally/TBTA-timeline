@@ -54,9 +54,9 @@ function grabText(e) {
 var theParent = document.querySelector("#theDude");
 theParent.addEventListener("click", grabText);
 //open:
-var btns = document.querySelectorAll("button");
+var btns = theParent.querySelectorAll("button");
 for (var i = 0; i < btns.length; i++) {
-  if (btns[i].id ==='toggle' || btns[i].id === 'toggle-on') {
+  if (btns[i].class ==='btn' || btns[i].id === 'toggle-on') {
     continue;
   }
   btns[i].addEventListener("click", function() {
@@ -74,66 +74,40 @@ window.addEventListener('click', closeModal);
 // lazy load images:
 // https://developers.google.com/web/updates/2016/04/intersectionobserver
 
-// sidebar toggle:
-var toggle = document.getElementById('toggle');
-var toggleOn = document.getElementById('toggle-on');
-var sidebar = document.getElementsByClassName('sidebar')[0];
-var main = document.getElementsByClassName('main')[0];
-function hideSidebar() {
-  main.style.marginRight = 0;
-  sidebar.style.display = "none";
-  toggle.style.display = "none";
-}
-toggle.addEventListener('click', hideSidebar);
-function showSidebar() {
-  sidebar.style.display = "grid";
-  main.style.marginRight = "10rem";
-  toggle.style.display = "inline";
-  toggleOn.style.display = "none";
-}
-toggleOn.addEventListener('click', showSidebar);
+//button
+var sidebarCtrls = (function() {
+  var btn = document.getElementsByClassName('btn')[0];
+  var sidebar = document.getElementsByClassName('sidebar')[0];
+  var main = document.getElementsByClassName('main')[0];
+  var clear = document.getElementsByClassName('clear')[0];
 
-//button visibility:
-function showButton() {
-  toggleOn.style.display = "inline";
-  test.style.borderRight = "2px solid white";
-}
-function hideButton() {
-  //setTimeout(function() {
-      test.style.borderRight = "";
-      toggleOn.style.display = "none";
-    //}, 750);
-}
-function sidebarHover() {
-  toggle.style.display = "inline";
-}
-function sidebarUnhover() {
-  toggle.style.display = "none";
-}
-var test = document.getElementById('test');
-test.addEventListener('mouseover', showButton);
-test.addEventListener('mouseout', hideButton);
-sidebar.addEventListener('mouseover', sidebarHover);
-sidebar.addEventListener('mouseout', sidebarUnhover);
-
-// example from StackOverflow, modified:
-
-document.addEventListener('DOMContentLoaded', function() {
-  var show = document.getElementById('show-pronunciation');
-  var pron = document.querySelector('.pronunciation');
-
-  pron.style.height = pron.clientHeight;
-  pron.classList.add('hidden');
-  show.addEventListener('click', function(e) {
-    pron.classList.toggle('hidden');
+  sidebar.addEventListener('mouseenter', function() {
+    btn.classList.toggle('show');
   });
-
-  [].forEach.call(document.querySelectorAll('li'), function(el, i) {
-    var dl = el.querySelector('dl');
-    dl.style.height = dl.clientHeight + 'px';
-
-    el.addEventListener('click', function() {
-      dl.classList.toggle('hidden');
-    });
+  sidebar.addEventListener('mouseleave', function() {
+    btn.classList.toggle('show');
   });
-});
+  // show button when hover on sidebar,
+  // hide button when leave sidebar
+  btn.addEventListener('click', function(e) {
+    sidebar.classList.toggle('hide-sidebar');
+    btn.classList.toggle('hide');
+    main.classList.toggle('margin-main');
+    //if (btn.classList[2] === 'hide' && sidebar.classList.length === 2) {
+      //btn.classList.remove('hide');
+      //btn.classList.add('show');
+    //}
+    //if (btn.style.right !==)
+  });
+  // click button -> hide sidebar
+  function showButton(e) {
+    if (sidebar.classList.length === 2 && e.clientX/window.innerWidth > .9) {
+        btn.classList.toggle('hide');
+        btn.classList.toggle('ready-to-show');
+    }
+    console.log(btn.classList);
+  }
+  clear.addEventListener('mouseenter', showButton);
+  clear.addEventListener('mouseleave', showButton);
+  //
+}());

@@ -32,14 +32,26 @@ body {
   position: fixed; /* solves scrollbar issue */
   top: 0;
   right: 0;
+  transition: width .5s;
 }
-.show-hide-btn {
+.hide-sidebar {
+  width: 0rem;
+}
+.clear {
   position: fixed;
-  right: 10rem;
+  right: 0;
+  height: 100%;
+  width: 2.5rem;
+  background-color: transparent;
+  border: 1px solid red;
+}
+.btn {
+  position: fixed;
+  right: 8rem;
   top: 50%;
   transform: translate(50%, -50%);
   padding-right: 2rem;
-  color: black;
+  color: transparent;
   background-color: white;
   outline: none;
   border: none;
@@ -47,11 +59,22 @@ body {
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+  overflow: hidden;
+  -webkit-transition: color .4s, right .5s;
+  transition: color .4s, right .5s;
 }
-
-@keyframes animatebtn {
-  from {right: 8rem}
-  to {right: 10rem}
+.show { /* transition */
+  color: black;
+  right: 10rem;
+  cursor: pointer;
+}
+.hide {
+  right: -2rem;
+}
+.ready-to-show {
+  color: black;
+  right: 0rem;
+  cursor: pointer;
 }
 
 .main {
@@ -63,7 +86,10 @@ body {
                        "splash"
                        "explainer"
                        "container" /* for entries */
-                       "footer"
+                       "footer";
+}
+.margin-main {
+  margin-right: 0;
 }
 .splash {
   grid-area: splash;
