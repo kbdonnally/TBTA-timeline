@@ -7,9 +7,32 @@
   <link href="https://fonts.googleapis.com/css?family=PT+Sans|Raleway" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/style.css">
-  <title>Modal</title>
+  <link rel="stylesheet" href="stickyscroll.css">
+  <title>Sticky Scroll</title>
 </head>
 <body>
+<div class="splash1">Splash 1</div>
+<div class="splash2">Splash 2</div>
+<div class="main">
+  Main
+  <div class="sidebar">Sidebar</div>
+</div>
+<script>
+(function() {
+  var sidebar = document.getElementsByClassName('sidebar')[0];
+  window.addEventListener('load', function() {
+    var init = sidebar.getBoundingClientRect().top;
+    window.addEventListener('scroll', function() {
+      console.log(sidebar.getBoundingClientRect().top, Math.round(window.scrollY));
+      if (sidebar.getBoundingClientRect().top <= 0) {
+        sidebar.classList.add('fixed');
+      }
+      if (window.scrollY < init) {
+        sidebar.classList.remove('fixed');
+      }
+    });
+  });
+}());
+</script>
 </body>
 </html>

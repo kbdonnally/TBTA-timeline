@@ -116,55 +116,17 @@ var sidebarCtrls = (function() {
     main.classList.toggle('main-margin-right');
     console.log(main.classList);
   });
+  // scroll behavior:
+    window.addEventListener('load', function() {
+      var init = sidebar.getBoundingClientRect().top;
+      window.addEventListener('scroll', function() {
+        console.log(sidebar.getBoundingClientRect().top, Math.round(window.scrollY));
+        if (sidebar.getBoundingClientRect().top <= 0) {
+          sidebar.classList.add('fixed');
+        }
+        if (window.scrollY < init) {
+          sidebar.classList.remove('fixed');
+        }
+      });
+    });
 }());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /* sidebar.addEventListener('mouseenter', function() {
-    btn.classList.toggle('show');
-  });
-  sidebar.addEventListener('mouseleave', function() {
-    btn.classList.toggle('show');
-  });
-  // show button when hover on sidebar,
-  // hide button when leave sidebar
-  /*btn.addEventListener('click', function(e) {
-    sidebar.classList.toggle('hide-sidebar');
-    btn.classList.toggle('hide');
-    main.classList.toggle('margin-main');
-    if (window.getComputedStyle(btn).right === '0px') {
-      btn.classList.toggle('ready-to-show');
-      btn.classList.toggle('show');
-      btn.classList.toggle('hide');
-      //console.log(window.getComputedStyle(btn).right);
-    }
-    console.log(window.getComputedStyle(btn).right);
-    console.log(btn.classList);
-  });
-  // click button -> hide sidebar
-  function showButton(e) {
-    if (sidebar.classList.length === 2 && e.clientX/window.innerWidth > .9) {
-        btn.classList.toggle('hide');
-        btn.classList.toggle('ready-to-show');
-    }
-  }
-  clear.addEventListener('mouseenter', showButton);
-  clear.addEventListener('mouseleave', showButton);*/

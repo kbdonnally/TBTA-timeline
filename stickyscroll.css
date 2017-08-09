@@ -1,0 +1,34 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+  border: 1px solid grey;
+}
+.splash1, .splash2 {
+  height: 100vh;
+}
+.splash1 {
+  background-color: lightgreen;
+}
+.splash2 {
+  background-color: cornflowerblue;
+}
+.main {
+  position: relative;
+  height: 200vh;
+  background-color: lightblue;
+}
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  grid-area: sidebar;
+  background-color: lightpink;
+  width: 10rem;
+  height: 100vh;
+}
+.fixed {
+  position: fixed;
+}
