@@ -1,0 +1,59 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+  border: 1px solid grey;
+  display: grid;
+  grid-gap: 0;
+  grid-template-areas: "splash"
+                       "main";
+}
+.experiment {
+  display: grid;
+  position: relative;
+  grid-template-columns: 300px 200px;
+  grid-template-rows: 200px 200px;
+  padding: 5px 20px;
+  height: 100vh;
+  border: 1px solid red;
+}
+.item {
+  position: absolute;
+grid-column: 2 / auto;
+grid-row: 1 / auto;
+left: 90px; right: 70px; top: 80px; bottom: 60px;
+border: 1px solid purple;
+}
+.splash1, .splash2 {
+  height: 100vh;
+}
+.splash1 {
+  background-color: lightgreen;
+}
+.splash2 {
+  background-color: cornflowerblue;
+}
+.main {
+  display: grid;
+  position: relative;
+  height: 200vh;
+  background-color: lightblue;
+}
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  grid-area: sidebar;
+  background-color: lightpink;
+  width: 10rem;
+  height: 100vh;
+}
+.fixed {
+  position: fixed;
+}
+.margin {
+  margin-right: 10rem;
+  position: static;
+}

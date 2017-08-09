@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans|Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300" rel="stylesheet">
+
+  <link rel="stylesheet" href="stickyscroll.css">
+  <title>Sticky Scroll</title>
+</head>
+<body>
+  <div class="experiment">
+      <div class="item"></div>
+  </div>
+<div class="splash">
+  <div class="splash1">Splash 1</div>
+  <div class="splash2">Splash 2</div>
+</div>
+<div class="main">
+  Main
+  <div class="sidebar">Sidebar</div>
+  <div style="border:1px solid black;float: left;">other content</div>
+</div>
+<script>
+(function () {
+  var main = document.getElementsByClassName('main')[0];
+  var sidebar = document.getElementsByClassName('sidebar')[0];
+  var init = main.getBoundingClientRect().top;
+  console.log(init);
+  window.addEventListener('scroll', function() {
+    console.log(window.scrollY);
+    if (window.scrollY >= init) {
+      sidebar.classList.add('fixed');
+      main.classList.add('margin');
+    } else if (window.scrollY < init) {
+      sidebar.classList.remove('fixed');
+      main.classList.remove('margin');
+    }
+  });
+}());
+</script>
+</body>
+</html>

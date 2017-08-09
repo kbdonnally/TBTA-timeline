@@ -54,31 +54,87 @@ function grabText(e) {
 var theParent = document.querySelector("#theDude");
 theParent.addEventListener("click", grabText);
 //open:
-var btns = document.querySelectorAll("button");
+var btns = theParent.querySelectorAll("button");
 for (var i = 0; i < btns.length; i++) {
+  console.log(btns[i].classList);
   btns[i].addEventListener("click", function() {
     modal.style.display = "block";
+
   });
 }
 //close:
-span.addEventListener('click', function() {
-  modal.style.display = "none";
-});
 function closeModal(event) {
   if (event.target == modal) { // height/width = 100%
     modal.style.display = "none";
   }
 }
 window.addEventListener('click', closeModal);
+/* NB: should lazy load images:
+https://developers.google.com/web/updates/2016/04/intersectionobserver */
+// ALSO COOL CSS STUFF: https://davidwalsh.name/ways-css-javascript-interact
+// end modal
 
-// lazy load images:
-// https://developers.google.com/web/updates/2016/04/intersectionobserver
-
-// sidebar toggle:
-function hideSidebar() {
+// start sidebar
+var sidebarCtrls = (function() {
+  var btn = document.getElementsByClassName('btn')[0];
   var sidebar = document.getElementsByClassName('sidebar')[0];
-  sidebar.setAttribute('display', 'none');
-  sidebar.style.width = 0;
-}
-var toggle = document.getElementById('sidebar-toggle');
-toggle.addEventListener('click', hideSidebar);
+  var main = document.getElementsByClassName('main')[0];
+  var btnZone = document.getElementsByClassName('btn-zone')[0];
+  // show button when hover on sidebar:
+  sidebar.addEventListener('mouseenter', function() {
+    btn.classList.remove('eight-rem');
+    btn.classList.add('ten-rem', 'black-text');
+    console.log(sidebar.getBoundingClientRect(), btn.getBoundingClientRect());
+  });
+  sidebar.addEventListener('mouseleave', function() {
+    btn.classList.remove('ten-rem', 'black-text');
+    btn.classList.add('eight-rem');
+  });
+  // show button when hover on btn-zone: (sidebar hidden)
+  btnZone.addEventListener('mouseenter', function(e) {
+    if (sidebar.classList.length === 3 /*&& e.clientX/window.innerWidth > .9*/) {
+      btn.classList.remove('neg2-rem');
+      btn.classList.add('zero-rem');
+    }
+  });
+  btnZone.addEventListener('mouseleave', function(e) {
+    if (sidebar.classList.length === 3 /*&& e.clientX/window.innerWidth > .9*/) {
+      btn.classList.remove('zero-rem');
+      btn.classList.add('neg2-rem');
+    }
+  });
+  // show/hide sidebar w/ button:
+  btn.addEventListener('click', function() {
+    if (btn.classList.contains('zero-rem')) {
+      btn.classList.remove('zero-rem');
+      btn.classList.add('ten-rem');
+    } else {
+      btn.classList.remove('ten-rem');
+      btn.classList.add('neg2-rem');
+    }
+    sidebar.classList.toggle('hide-sidebar');
+    main.classList.toggle('main-margin-right');
+    console.log(main.classList);
+  });
+}());
+
+// fingers crossed:
+(function () {
+  var main = document.getElementsByClassName('main')[0];
+  var sidebar = document.getElementsByClassName('sidebar')[0];
+  var btn = document.getElementsByClassName('btn')[0];
+  var init = main.getBoundingClientRect().top;
+  console.log(init);
+//  window.addEventListener('scroll', function() {
+    console.log();
+    //if (document.body.scrollTop >= init - window.innerHeight) {
+      sidebar.classList.add('fixed');
+      main.classList.add('margin');
+      btn.classList.add('btn-visible');
+  /*  } else if (document.body.scrollTop < init - window.innerHeight) {
+      sidebar.classList.remove('fixed');
+      main.classList.remove('margin');
+      btn.classList.remove('btn-visible');
+    }
+  }); */
+}());
