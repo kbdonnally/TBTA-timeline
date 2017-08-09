@@ -32,7 +32,7 @@ body {
 .sidebar {
   height: 100vh; /*100%;*/
   width: 10rem;
-  position: absolute; /* testing */
+  position: fixed; /* testing */
   right: 0;
   top: 0;
   transition: width .5s;
@@ -99,7 +99,7 @@ body {
   grid-area: main;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: /*"splash1"*/
+  grid-template-areas:
                        "toggle"
                        "splash"
                        "explainer"
@@ -258,7 +258,7 @@ p {
 .container {
   margin: auto 0;
   background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%);
-  z-index: -1;
+/*  z-index: -1; ...why did I put this here in the first place...? */
   display: grid;
   grid-gap: 10px;
   grid-auto-flow: row;
