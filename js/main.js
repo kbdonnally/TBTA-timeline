@@ -56,11 +56,10 @@ theParent.addEventListener("click", grabText);
 //open:
 var btns = theParent.querySelectorAll("button");
 for (var i = 0; i < btns.length; i++) {
-  if (btns[i].class ==='btn' || btns[i].id === 'toggle-on') {
-    continue;
-  }
+  console.log(btns[i].classList);
   btns[i].addEventListener("click", function() {
     modal.style.display = "block";
+
   });
 }
 //close:
@@ -72,6 +71,7 @@ function closeModal(event) {
 window.addEventListener('click', closeModal);
 /* NB: should lazy load images:
 https://developers.google.com/web/updates/2016/04/intersectionobserver */
+// ALSO COOL CSS STUFF: https://davidwalsh.name/ways-css-javascript-interact
 // end modal
 
 // start sidebar
@@ -92,13 +92,13 @@ var sidebarCtrls = (function() {
   });
   // show button when hover on btn-zone: (sidebar hidden)
   btnZone.addEventListener('mouseenter', function(e) {
-    if (sidebar.classList.length === 2 /*&& e.clientX/window.innerWidth > .9*/) {
+    if (sidebar.classList.length === 3 /*&& e.clientX/window.innerWidth > .9*/) {
       btn.classList.remove('neg2-rem');
       btn.classList.add('zero-rem');
     }
   });
   btnZone.addEventListener('mouseleave', function(e) {
-    if (sidebar.classList.length === 2 /*&& e.clientX/window.innerWidth > .9*/) {
+    if (sidebar.classList.length === 3 /*&& e.clientX/window.innerWidth > .9*/) {
       btn.classList.remove('zero-rem');
       btn.classList.add('neg2-rem');
     }
@@ -116,17 +116,25 @@ var sidebarCtrls = (function() {
     main.classList.toggle('main-margin-right');
     console.log(main.classList);
   });
-  // scroll behavior:
-    window.addEventListener('load', function() {
-      var init = sidebar.getBoundingClientRect().top;
-      window.addEventListener('scroll', function() {
-        console.log(sidebar.getBoundingClientRect().top, Math.round(window.scrollY));
-        if (sidebar.getBoundingClientRect().top <= 0) {
-          sidebar.classList.add('fixed');
-        }
-        if (window.scrollY < init) {
-          sidebar.classList.remove('fixed');
-        }
-      });
-    });
+}());
+
+// fingers crossed:
+(function () {
+  var main = document.getElementsByClassName('main')[0];
+  var sidebar = document.getElementsByClassName('sidebar')[0];
+  var btn = document.getElementsByClassName('btn')[0];
+  var init = main.getBoundingClientRect().top;
+  console.log(init);
+//  window.addEventListener('scroll', function() {
+    console.log();
+    //if (document.body.scrollTop >= init - window.innerHeight) {
+      sidebar.classList.add('fixed');
+      main.classList.add('margin');
+      btn.classList.add('btn-visible');
+  /*  } else if (document.body.scrollTop < init - window.innerHeight) {
+      sidebar.classList.remove('fixed');
+      main.classList.remove('margin');
+      btn.classList.remove('btn-visible');
+    }
+  }); */
 }());

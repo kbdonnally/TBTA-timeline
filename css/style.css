@@ -18,20 +18,23 @@ body {
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;
   font-size: 100%;
+}
+.wrapper {
   /* grid info: */
   display: grid;
   grid-gap: 0px;
   grid-auto-flow: column;
   grid-auto-rows: minmax(1rem, auto);
-  grid-template-areas: "main";
+  grid-template-areas:  "splash1"
+                        "main";
 }
 
 .sidebar {
-  height: 100%;
+  height: 100vh; /*100%;*/
   width: 10rem;
-  position: fixed;
-  top: 0;
+  position: absolute; /* testing */
   right: 0;
+  top: 0;
   transition: width .5s;
 }
 .hide-sidebar {
@@ -44,7 +47,11 @@ body {
   width: 2.5rem;
   background-color: transparent;
 }
+.btn-visible {
+  visibility: visible!important;
+}
 .btn {
+  visibility: hidden;
   cursor: pointer;
   position: fixed;
   top: 50%;
@@ -61,6 +68,9 @@ body {
   -webkit-transition: color .4s, right .5s;
   transition: color .4s, right .5s;
 }
+/*.btn-scrolled {
+  visibility: visible;
+}*/
 /* interact w/ button: */
 .black-text {
   color: black;
@@ -83,18 +93,41 @@ body {
   margin-right: 0!important;
 }
 .main {
-  margin-right: 10rem;
+  position: relative;
+  margin-right: 0; /* 8/8 */
+  padding-right: 10rem;
   grid-area: main;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: "splash1"
+  grid-template-areas: /*"splash1"*/
                        "toggle"
                        "splash"
                        "explainer"
                        "container" /* for entries */
                        "footer";
 }
+/* testing w/ scroll*/
+.splash1 {
+  grid-area: splash1;
+  border: 1px solid red;
+  background-color: lightblue;
+  z-index: 30;
+}
 
+.fixed {
+  position: fixed;
+  height: 100%;
+}
+.margin {
+  margin-right: 10rem;
+  padding-right: 0;
+  position: static;
+}
+.one, .two {
+  margin: 0;
+  height: 100vh;
+}
+/* end testing */
 .splash {
   grid-area: splash;
 }
@@ -156,6 +189,8 @@ body {
   padding: 0px;
   font-size: .5rem;
   font-weight: bold;
+  -webkit-transition: border .3s;
+  transition: border .3s;
 }
 .none {
   height: 1px;
