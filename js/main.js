@@ -70,18 +70,75 @@ function closeModal(event) {
   }
 }
 window.addEventListener('click', closeModal);
+/* NB: should lazy load images:
+https://developers.google.com/web/updates/2016/04/intersectionobserver */
+// end modal
 
-// lazy load images:
-// https://developers.google.com/web/updates/2016/04/intersectionobserver
-
-//button
+// start sidebar
 var sidebarCtrls = (function() {
   var btn = document.getElementsByClassName('btn')[0];
   var sidebar = document.getElementsByClassName('sidebar')[0];
   var main = document.getElementsByClassName('main')[0];
-  var clear = document.getElementsByClassName('clear')[0];
-
+  var btnZone = document.getElementsByClassName('btn-zone')[0];
+  // show button when hover on sidebar:
   sidebar.addEventListener('mouseenter', function() {
+    btn.classList.remove('eight-rem');
+    btn.classList.add('ten-rem', 'black-text');
+    console.log(sidebar.getBoundingClientRect(), btn.getBoundingClientRect());
+  });
+  sidebar.addEventListener('mouseleave', function() {
+    btn.classList.remove('ten-rem', 'black-text');
+    btn.classList.add('eight-rem');
+  });
+  // show button when hover on btn-zone: (sidebar hidden)
+  btnZone.addEventListener('mouseenter', function(e) {
+    if (sidebar.classList.length === 2 /*&& e.clientX/window.innerWidth > .9*/) {
+      btn.classList.remove('neg2-rem');
+      btn.classList.add('zero-rem');
+    }
+  });
+  btnZone.addEventListener('mouseleave', function(e) {
+    if (sidebar.classList.length === 2 /*&& e.clientX/window.innerWidth > .9*/) {
+      btn.classList.remove('zero-rem');
+      btn.classList.add('neg2-rem');
+    }
+  });
+  // show/hide sidebar w/ button:
+  btn.addEventListener('click', function() {
+    if (btn.classList.contains('zero-rem')) {
+      btn.classList.remove('zero-rem');
+      btn.classList.add('ten-rem');
+    } else {
+      btn.classList.remove('ten-rem');
+      btn.classList.add('neg2-rem');
+    }
+    sidebar.classList.toggle('hide-sidebar');
+    main.classList.toggle('main-margin-right');
+    console.log(main.classList);
+  });
+}());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* sidebar.addEventListener('mouseenter', function() {
     btn.classList.toggle('show');
   });
   sidebar.addEventListener('mouseleave', function() {
@@ -89,15 +146,18 @@ var sidebarCtrls = (function() {
   });
   // show button when hover on sidebar,
   // hide button when leave sidebar
-  btn.addEventListener('click', function(e) {
+  /*btn.addEventListener('click', function(e) {
     sidebar.classList.toggle('hide-sidebar');
     btn.classList.toggle('hide');
     main.classList.toggle('margin-main');
-    //if (btn.classList[2] === 'hide' && sidebar.classList.length === 2) {
-      //btn.classList.remove('hide');
-      //btn.classList.add('show');
-    //}
-    //if (btn.style.right !==)
+    if (window.getComputedStyle(btn).right === '0px') {
+      btn.classList.toggle('ready-to-show');
+      btn.classList.toggle('show');
+      btn.classList.toggle('hide');
+      //console.log(window.getComputedStyle(btn).right);
+    }
+    console.log(window.getComputedStyle(btn).right);
+    console.log(btn.classList);
   });
   // click button -> hide sidebar
   function showButton(e) {
@@ -105,9 +165,6 @@ var sidebarCtrls = (function() {
         btn.classList.toggle('hide');
         btn.classList.toggle('ready-to-show');
     }
-    console.log(btn.classList);
   }
   clear.addEventListener('mouseenter', showButton);
-  clear.addEventListener('mouseleave', showButton);
-  //
-}());
+  clear.addEventListener('mouseleave', showButton);*/

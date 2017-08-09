@@ -29,7 +29,7 @@ body {
 .sidebar {
   height: 100%;
   width: 10rem;
-  position: fixed; /* solves scrollbar issue */
+  position: fixed;
   top: 0;
   right: 0;
   transition: width .5s;
@@ -37,21 +37,19 @@ body {
 .hide-sidebar {
   width: 0rem;
 }
-.clear {
+.btn-zone {
   position: fixed;
   right: 0;
   height: 100%;
   width: 2.5rem;
   background-color: transparent;
-  border: 1px solid red;
 }
 .btn {
+  cursor: pointer;
   position: fixed;
-  right: 8rem;
   top: 50%;
   transform: translate(50%, -50%);
   padding-right: 2rem;
-  color: transparent;
   background-color: white;
   outline: none;
   border: none;
@@ -63,20 +61,27 @@ body {
   -webkit-transition: color .4s, right .5s;
   transition: color .4s, right .5s;
 }
-.show { /* transition */
+/* interact w/ button: */
+.black-text {
   color: black;
-  right: 10rem;
-  cursor: pointer;
 }
-.hide {
+.ten-rem {
+  right: 10rem;
+}
+.eight-rem {
+  right: 8rem;
+  color: transparent;
+}
+.zero-rem {
+  right: 0rem;
+}
+.neg2-rem {
   right: -2rem;
 }
-.ready-to-show {
-  color: black;
-  right: 0rem;
-  cursor: pointer;
-}
 
+.main-margin-right {
+  margin-right: 0!important;
+}
 .main {
   margin-right: 10rem;
   grid-area: main;
@@ -88,9 +93,7 @@ body {
                        "container" /* for entries */
                        "footer";
 }
-.margin-main {
-  margin-right: 0;
-}
+
 .splash {
   grid-area: splash;
 }
