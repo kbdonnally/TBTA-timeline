@@ -18,40 +18,116 @@ body {
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;
   font-size: 100%;
+}
+.wrapper {
   /* grid info: */
   display: grid;
   grid-gap: 0px;
-  grid-template-columns: 1fr 10rem;
   grid-auto-flow: column;
   grid-auto-rows: minmax(1rem, auto);
-  grid-template-areas: "main sidebar";
+  grid-template-areas:  "splash1"
+                        "main";
 }
-#sidebar-toggle {
-  position: fixed;
-  right: 12rem;
-  top: 50%;
-  transform: translate(0, -50%);
-  color: red;
-  font-size: 4rem;
-  display: default;
-}
+
 .sidebar {
-  grid-area: sidebar;
-  height: 100%;
+  height: 100vh; /*100%;*/
   width: 10rem;
-  position: fixed; /* solves scrollbar issue */
-  top: 0;
+  position: fixed; /* testing */
   right: 0;
+  top: 0;
+  transition: width .5s;
+}
+.hide-sidebar {
+  width: 0rem;
+}
+.btn-zone {
+  position: fixed;
+  right: 0;
+  height: 100%;
+  width: 2.5rem;
+  background-color: transparent;
+}
+.btn-visible {
+  visibility: visible!important;
+}
+.btn {
+  visibility: hidden;
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  transform: translate(50%, -50%);
+  padding-right: 2rem;
+  background-color: white;
+  outline: none;
+  border: none;
+  font-size: 2rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  overflow: hidden;
+  -webkit-transition: color .4s, right .5s;
+  transition: color .4s, right .5s;
+}
+/*.btn-scrolled {
+  visibility: visible;
+}*/
+/* interact w/ button: */
+.black-text {
+  color: black;
+}
+.ten-rem {
+  right: 10rem;
+}
+.eight-rem {
+  right: 8rem;
+  color: transparent;
+}
+.zero-rem {
+  right: 0rem;
+}
+.neg2-rem {
+  right: -2rem;
+}
+
+.main-margin-right {
+  margin-right: 0!important;
 }
 .main {
+  position: relative;
+  margin-right: 0; /* 8/8 */
+  padding-right: 10rem;
   grid-area: main;
-  display: grid; /* NB: flex better? */
+  display: grid;
   grid-template-columns: 1fr;
-  grid-template-areas: "splash"
+  grid-template-areas:
+                       "toggle"
+                       "splash"
                        "explainer"
                        "container" /* for entries */
-                       "footer"
+                       "footer";
 }
+/* testing w/ scroll*/
+.splash1 {
+  grid-area: splash1;
+  border: 1px solid red;
+  background-color: lightblue;
+  z-index: 30;
+}
+
+.fixed {
+  position: fixed;
+  height: 100%;
+}
+.margin {
+  margin-right: 10rem;
+  padding-right: 0;
+  position: static;
+}
+.one, .two {
+  margin: 0;
+  height: 100vh;
+}
+/* end testing */
 .splash {
   grid-area: splash;
 }
@@ -76,6 +152,10 @@ body {
                        "small-timeline"
                        '.';
 }
+@keyframes sidebarmove {
+  from {display: grid; opacity: 1}
+  to {display: none; opacity: 0}
+}
 .small-timeline {
   grid-area: small-timeline;
 }
@@ -87,8 +167,7 @@ body {
 
 /* 2b. visuals */
 .sidebar {
-  background-color: rgba(255, 255, 255, .5);
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, .05);
+  background-color: rgba(255, 255, 255, 1);
 }
 .line {
   z-index: -1;
@@ -107,6 +186,8 @@ body {
   padding: 0px;
   font-size: .5rem;
   font-weight: bold;
+  -webkit-transition: border .3s;
+  transition: border .3s;
 }
 .none {
   height: 1px;
@@ -177,7 +258,7 @@ p {
 .container {
   margin: auto 0;
   background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%);
-  z-index: -1;
+/*  z-index: -1; ...why did I put this here in the first place...? */
   display: grid;
   grid-gap: 10px;
   grid-auto-flow: row;
