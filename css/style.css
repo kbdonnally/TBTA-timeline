@@ -145,9 +145,6 @@ body {
 
 /* 2a. skeleton */
 .sidebar {
-  /*animation-name: sidebarmove;
-  animation-duration: .7s;
-  animation-timing-function: ease; how to get things to ease off the page??? */
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 2rem 1fr 1.5rem;
