@@ -6,39 +6,39 @@
 
   <link href="https://fonts.googleapis.com/css?family=PT+Sans|Raleway" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
 
   <link rel="stylesheet" href="stickyscroll.css">
-  <title>Sticky Scroll</title>
+  <title>Intro Testing</title>
 </head>
 <body>
-  <div class="experiment">
-      <div class="item"></div>
+<div class="wrapper">
+  <div class="intro">
+    <div class="splash">
+
+      <div class="splash-grid">
+        <div class="splash-title">ADMIN RESPONSE TIMELINE</div>
+        <div class="splash-braces">
+          <img src="img/curly-bracket-right.svg" height="400px" width="30px" alt="curly brace">
+        </div>
+        <div class="splash-para">
+          A visual history of the University's responses or lack thereof to sexual violence, juxtaposed with students' voices back. <!-- in explainer: The timeline spans... -->
+        </div>
+      </div>
+
+    </div>
+    <div class="explainer">
+    </div>
   </div>
-<div class="splash">
-  <div class="splash1">Splash 1</div>
-  <div class="splash2">Splash 2</div>
-</div>
-<div class="main">
-  Main
-  <div class="sidebar">Sidebar</div>
-  <div style="border:1px solid black;float: left;">other content</div>
-</div>
+
+  <div class="main">
+  </div>
+
+</div> <!-- end wrapper -->
 <script>
 (function () {
   var main = document.getElementsByClassName('main')[0];
-  var sidebar = document.getElementsByClassName('sidebar')[0];
-  var init = main.getBoundingClientRect().top;
-  console.log(init);
-  window.addEventListener('scroll', function() {
-    console.log(window.scrollY);
-    if (window.scrollY >= init) {
-      sidebar.classList.add('fixed');
-      main.classList.add('margin');
-    } else if (window.scrollY < init) {
-      sidebar.classList.remove('fixed');
-      main.classList.remove('margin');
-    }
-  });
+
 }());
 </script>
 </body>
