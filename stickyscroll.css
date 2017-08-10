@@ -1,11 +1,13 @@
 body {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
   text-align: center;
   font-family: 'Raleway', sans-serif;
   font-size: 2rem;
   border: 1px solid grey;
 }
+/* skeleton */
 .wrapper {
   display: grid;
   grid-gap: 0;
@@ -15,6 +17,29 @@ body {
 
 .intro {
   grid-area: intro;
+}
+.main {
+  grid-area: main;
+}
+
+/* 1. intro **********************************************************************/
+/* 1a. logo */
+#homelink {
+  display: block;
+  position: absolute;
+  left: .6rem;
+  top: .4rem;
+  margin: 0;
+  height: 2rem;
+  line-height: 2rem;
+  color: white;
+  opacity: .7;
+  font-family: 'Permanent Marker', cursive;
+  text-shadow: 0 0 3px rgba(0,0,0,.2);
+  text-decoration: none;
+}
+#homelink:hover {
+  text-shadow: 0 0 3px rgba(0,0,0,1);
 }
 .splash {
   height: 100vh;
@@ -47,7 +72,8 @@ body {
   text-align: right;
 }
 .border {
-  border-top: 3px solid black;
+  background: linear-gradient(to right, rgba(0,0,0,.2), rgba(0,0,0,1) 30%, rgba(0,0,0,1) 90%, rgba(0,0,0,.2));
+  height: 2px;
   width: 90%;
   margin: auto;
 }
@@ -65,7 +91,4 @@ body {
 
 .explainer {
   height: 100vh;
-}
-.main {
-  grid-area: main;
 }
