@@ -56,7 +56,7 @@ theParent.addEventListener("click", grabText);
 //open:
 var btns = theParent.querySelectorAll("button");
 for (var i = 0; i < btns.length; i++) {
-  console.log(btns[i].classList);
+  /*console.log(btns[i].classList);*/
   btns[i].addEventListener("click", function() {
     modal.style.display = "block";
 
@@ -124,9 +124,9 @@ var sidebarCtrls = (function() {
   var sidebar = document.getElementsByClassName('sidebar')[0];
   var btn = document.getElementsByClassName('btn')[0];
   var init = main.getBoundingClientRect().top;
-  console.log(init);
+
 //  window.addEventListener('scroll', function() {
-    console.log();
+
     //if (document.body.scrollTop >= init - window.innerHeight) {
       sidebar.classList.add('fixed');
       main.classList.add('margin');
