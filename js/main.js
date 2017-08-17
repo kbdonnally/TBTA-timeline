@@ -114,7 +114,7 @@ var sidebarCtrls = (function() {
     }
     sidebar.classList.toggle('hide-sidebar');
     main.classList.toggle('main-margin-right');
-    console.log(main.classList);
+    console.log(sidebar.classList);
   });
 }());
 
@@ -125,9 +125,6 @@ var sidebarCtrls = (function() {
   var btn = document.getElementsByClassName('btn')[0];
   var init = main.getBoundingClientRect().top;
 
-//  window.addEventListener('scroll', function() {
-
-    //if (document.body.scrollTop >= init - window.innerHeight) {
       sidebar.classList.add('fixed');
       main.classList.add('margin');
       btn.classList.add('btn-visible');

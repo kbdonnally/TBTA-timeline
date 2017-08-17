@@ -23,7 +23,8 @@ body {
   grid-template-areas:  "splash1"
                         "main";
 }
-
+/* end skeleton ***************************************************************/
+/* sidebar ********************************************************************/
 .sidebar {
   height: 100vh; /*100%;*/
   width: 10rem;
@@ -63,10 +64,6 @@ body {
   -webkit-transition: color .4s, right .5s;
   transition: color .4s, right .5s;
 }
-/*.btn-scrolled {
-  visibility: visible;
-}*/
-/* interact w/ button: */
 .black-text {
   color: black;
 }
@@ -83,6 +80,7 @@ body {
 .neg2-rem {
   right: -2rem;
 }
+/* end sidebar ********************************************************************/
 
 .main-margin-right {
   margin-right: 0!important;
@@ -109,10 +107,10 @@ body {
   z-index: 30;
 }
 
-.fixed {
+/*.fixed {
   position: fixed;
   height: 100%;
-}
+} also in main.js */
 .margin {
   margin-right: 10rem;
   padding-right: 0;
