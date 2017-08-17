@@ -1,3 +1,5 @@
+/* 0. skeleton ****************************************************************/
+
 html {
   height: 100%;
 }
@@ -16,29 +18,13 @@ body {
   grid-gap: 0;
   grid-template-areas: "intro"
                        "main";
-  /*background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5));*/
 }
-
 .intro {
   grid-area: intro;
   /*background-color: white; missed spot on collage, sidebar shows - fix! */
 }
 .main {
   grid-area: main;
-  height: 200vh;
-  background-color: white;
-  margin-top: -100vh;
-  padding-top: 100vh;
-}
-.sidebar {
-  position: sticky;
-  position: -webkit-sticky;
-  right: 0;
-  top: 0;
-  float: right;
-  width: 10rem;
-  height: 100vh;
-  background-color: lightblue;
 }
 
 /* 1. intro **********************************************************************/
@@ -65,7 +51,8 @@ body {
 
 /* 1b. splash page */
 .splash {
-  position: fixed; /* 8/16 */
+  position: sticky;
+  top: 0px;
   z-index: -1;
   height: 100vh;
   width: 100%;
@@ -186,9 +173,9 @@ body {
   background-color: white;
   border-radius: 50%;
 }
-.reason1, .reason2, .reason3 { /* group style -> can change individuals below */
+.reason1, .reason2, .reason3 {
   color: white;
-  width: 16rem; /* match circles */
+  width: 16rem;
   margin-bottom: 2rem;
   font-size: 1.5rem;
   font-weight: bold;
@@ -212,4 +199,24 @@ body {
   transform: translate(0%, -50%);
   color: white;
   font-size: 1rem;
+}
+
+/* 2. main ********************************************************************/
+.main {
+  background-color: white;
+  margin-right: 10rem;
+}
+.content {
+  border: 1px solid pink;
+  height: 50vh;
+  width: auto;
+}
+.sidebar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: -2;
+  width: 10rem;
+  height: 100vh;
+  background-color: lightblue;
 }
