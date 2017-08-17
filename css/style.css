@@ -8,7 +8,8 @@ html {
 }
 body {
   height: 100%;
-  margin: 0px;
+  width: 100%;
+  margin: 0;
   box-sizing: border-box;
   font-family: "Raleway", sans-serif;
   font-size: 100%;
@@ -220,14 +221,6 @@ body {
   e. entries.................(skeleton, visuals)
   f. footer...........................(skeleton)
 */
-
-/* 3a. body */
-body {
-  background-image: url(../img/paper.jpg);
-  background-attachment: fixed;
-  width: 100%;
-  margin: 0;
-}
 
 h1 {
   font-size: 3rem;
