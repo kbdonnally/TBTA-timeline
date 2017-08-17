@@ -15,8 +15,8 @@
 <body>
 <div class="wrapper">
   <div class="intro">
-    <a href="http://takeback.scholarslab.org/" id="homelink">TBTA<!--div class="border"></div--></a>
-    <div class="splash" style="opacity:1">
+    <a href="http://takeback.scholarslab.org/" id="homelink" target="_blank">TBTA<!--div class="border"></div--></a>
+    <div class="splash">
       <div class="splash-grid">
         <div class="splash-title">
           <div class="border"></div>
@@ -44,17 +44,22 @@
   </div>
 
   <div class="main" style="height: 200vh">
-  </div>
-
+    <div class="sidebar" style="line-height: 25vh;">Fixed Div <br> content <br> content <br> content</div>
+    <div style="line-height:50vh"> content 1 <br> content 2 <br> content 3 <br> content 4 </div>
+  </div> <!-- end main -->
 </div> <!-- end wrapper -->
+
 <script>
-/* (function () {
-  var splash = document.getElementsByClassName('splash')[0];
+/*(function () {
+  var sidebar = document.getElementsByClassName('sidebar')[0];
+  var height = window.innerHeight;
+  console.log(height);
   window.addEventListener('scroll', function() {
+
     var y = window.scrollY;
-    opacity = 1 - y/600;
-    splash.style.opacity = opacity;
-    console.log(opacity);
+    if (window.scrollY >= 900) {
+      sidebar.classList.add('side-z');
+    }
   });
 }()); */
 </script>
