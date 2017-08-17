@@ -1,9 +1,3 @@
-/* Table of Contents:
-  1. skeleton................................(layout info)
-  2. sidebar..........(skeleton, visuals for each element)
-  3. main.............(skeleton, visuals for each element)
-*/
-
 /* 1. skeleton ****************************************************************/
 
 * {
@@ -233,9 +227,6 @@ body {
   background-attachment: fixed;
   width: 100%;
   margin: 0;
-}
-* {
-  box-sizing: border-box;
 }
 
 h1 {
