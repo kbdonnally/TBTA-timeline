@@ -20,7 +20,7 @@ body {
   grid-gap: 0px;
   grid-auto-flow: column;
   grid-auto-rows: minmax(1rem, auto);
-  grid-template-areas:  "splash1"
+  grid-template-areas:  "intro"
                         "main";
 }
 /* end skeleton ***************************************************************/
