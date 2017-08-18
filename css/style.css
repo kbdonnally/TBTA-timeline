@@ -86,9 +86,12 @@ body {
   margin-right: 0!important;
 }
 .main {
-  position: relative;
-  margin-right: 0; /* 8/8 */
-  padding-right: 10rem;
+  /* position: relative;
+  margin-right: 0;
+  padding-right: 10rem; */
+  margin-right: 10rem;
+  padding-right: 0;
+  position: static;
   grid-area: main;
   display: grid;
   grid-template-columns: 1fr;
@@ -99,6 +102,11 @@ body {
                        "container" /* for entries */
                        "footer";
 }
+/* .margin {
+  margin-right: 10rem;
+  padding-right: 0;
+  position: static;
+} */
 /* start dummy intro **********************************************************/
 .splash1 {
   grid-area: splash1;
@@ -106,11 +114,7 @@ body {
   background-color: lightblue;
   z-index: 30;
 }
-.margin {
-  margin-right: 10rem;
-  padding-right: 0;
-  position: static;
-}
+
 .one, .two {
   margin: 0;
   height: 100vh;

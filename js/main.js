@@ -123,10 +123,10 @@ var sidebarCtrls = (function() {
   var main = document.getElementsByClassName('main')[0];
   var sidebar = document.getElementsByClassName('sidebar')[0];
   var btn = document.getElementsByClassName('btn')[0];
-  var init = main.getBoundingClientRect().top;
+  //var init = main.getBoundingClientRect().top;
 
-      sidebar.classList.add('fixed');
-      main.classList.add('margin');
-      btn.classList.add('btn-visible');
+  sidebar.classList.add('fixed');
+  //main.classList.add('margin');
+  btn.classList.add('btn-visible');
 
 }());
