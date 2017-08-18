@@ -92,13 +92,13 @@ var sidebarCtrls = (function() {
   });
   // show button when hover on btn-zone: (sidebar hidden)
   btnZone.addEventListener('mouseenter', function(e) {
-    if (sidebar.classList.length === 2 /*&& e.clientX/window.innerWidth > .9*/) {
+    if (sidebar.classList.length === 2) {
       btn.classList.remove('neg2-rem');
       btn.classList.add('zero-rem');
     }
   });
   btnZone.addEventListener('mouseleave', function(e) {
-    if (sidebar.classList.length === 2 /*&& e.clientX/window.innerWidth > .9*/) {
+    if (sidebar.classList.length === 2) {
       btn.classList.remove('zero-rem');
       btn.classList.add('neg2-rem');
     }
@@ -114,19 +114,5 @@ var sidebarCtrls = (function() {
     }
     sidebar.classList.toggle('hide-sidebar');
     main.classList.toggle('main-margin-right');
-    console.log(sidebar.classList);
   });
-}());
-
-// fingers crossed:
-(function () {
-  var main = document.getElementsByClassName('main')[0];
-  var sidebar = document.getElementsByClassName('sidebar')[0];
-  var btn = document.getElementsByClassName('btn')[0];
-  //var init = main.getBoundingClientRect().top;
-
-  //sidebar.classList.add('fixed');
-  //main.classList.add('margin');
-  btn.classList.add('btn-visible');
-
 }());
