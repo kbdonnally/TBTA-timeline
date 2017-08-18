@@ -50,7 +50,7 @@ function grabText(e) {
   e.stopPropagation();
 } // end grabText
 
-var theParent = document.querySelector("#theDude");
+var theParent = document.querySelector("#entry-container");
 theParent.addEventListener("click", grabText); // btn click bubbles to parent
 // open modal:
 var btns = theParent.querySelectorAll("button");
