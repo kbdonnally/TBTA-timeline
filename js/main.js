@@ -128,10 +128,5 @@ var sidebarCtrls = (function() {
       sidebar.classList.add('fixed');
       main.classList.add('margin');
       btn.classList.add('btn-visible');
-  /*  } else if (document.body.scrollTop < init - window.innerHeight) {
-      sidebar.classList.remove('fixed');
-      main.classList.remove('margin');
-      btn.classList.remove('btn-visible');
-    }
-  }); */
+
 }());

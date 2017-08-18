@@ -99,18 +99,13 @@ body {
                        "container" /* for entries */
                        "footer";
 }
-/* testing w/ scroll*/
+/* start dummy intro **********************************************************/
 .splash1 {
   grid-area: splash1;
   border: 1px solid red;
   background-color: lightblue;
   z-index: 30;
 }
-
-/*.fixed {
-  position: fixed;
-  height: 100%;
-} also in main.js */
 .margin {
   margin-right: 10rem;
   padding-right: 0;
@@ -120,7 +115,7 @@ body {
   margin: 0;
   height: 100vh;
 }
-/* end testing */
+/* end dummy intro ************************************************************/
 .splash {
   grid-area: splash;
 }
