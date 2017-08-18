@@ -165,7 +165,6 @@ body {
   background-color: lightblue;
   z-index: 30;
 }
-
 .one, .two {
   margin: 0;
   height: 100vh;
@@ -184,30 +183,13 @@ body {
   grid-area: footer;
 }
 
-/* 3. main ********************************************************************/
 
 
-h1 {
-  font-size: 3rem;
-  font-weight: normal;
-}
-h2 {
-  font-size: 1.5rem;
-  font-weight: normal;
-}
-h3 {
-  font-weight: normal;
-}
-p {
-  font-size: 1rem;
-}
-
-/*3e. container*/
+/* container ******************************************************************/
 /*skeleton*/
 .container {
   margin: auto 0;
   background-image: linear-gradient(to right, #6f256f -99.5%, rgba(255, 255, 255, 0) 10.5%, rgba(111, 37, 111, 1) 110%);
-/*  z-index: -1; ...why did I put this here in the first place...? */
   display: grid;
   grid-gap: 10px;
   grid-auto-flow: row;
@@ -223,11 +205,9 @@ p {
   grid-column: 1 / -1;
   grid-row: 1;
 }
-
 .entry {
   grid-column: col2-start;
 }
-
 .tl-wrapper {
   grid-column: col1-start;
   justify-self: center;
@@ -274,7 +254,6 @@ p {
   order: -1;
   margin-bottom: 3em;
 }
-
 .dots {
   grid-column: col1-start;
   justify-self: center;
@@ -439,23 +418,23 @@ p[class="dots"]:nth-last-of-type(3) {
 }
 .entry button:focus {
   outline: 0;
-  border-color: #807615; /* darkest chartreuse */
+  border-color: #807615;
 }
 
 .entry h2, .entry h3 {
   margin: 0;
+  font-weight: normal;
+  color: #292956;
 }
 .entry h2 {
-  color: #292956;
   font-size: 1.5rem;
 }
 .entry h3 {
-  color: #292956;
   font-size: 1rem;
   font-family: 'Roboto Slab', serif;
 }
 .entry p {
-  margin: 1em 0;
+  margin: 1rem 0;
   line-height: 1.6; /* 1 or 1.15 for lil screens */
 }
 
@@ -477,8 +456,8 @@ p[class="dots"]:nth-last-of-type(3) {
     line-height: 4rem;
   }
 }
-
-/*3f. modal*/
+/* end container **************************************************************/
+/* modal **********************************************************************/
 .modal {
   display: none;
   position: fixed;
@@ -499,13 +478,11 @@ p[class="dots"]:nth-last-of-type(3) {
   font-weight: bold;
   margin: 0;
 }
-
 .close:hover, .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-
 .modal-content {
   position: relative;
   box-sizing: content-box;
@@ -523,7 +500,6 @@ p[class="dots"]:nth-last-of-type(3) {
   align-content: center;
   justify-content: space-between;
 }
-
 .pic {
   padding: 1rem;
   border: 2px solid #aaa039;
@@ -539,7 +515,6 @@ p[class="dots"]:nth-last-of-type(3) {
 .num-msg {
   font-style: normal;
 }
-
 .preview-text, .title, .link {
   box-sizing: border-box;
   width: 100%;
@@ -553,7 +528,6 @@ p[class="dots"]:nth-last-of-type(3) {
   margin-top: 0;
   font-weight: bold;
 }
-
 .link {
   text-decoration: none;
   cursor: pointer;
@@ -563,7 +537,6 @@ p[class="dots"]:nth-last-of-type(3) {
 .link span {
   border-bottom: 2px solid #aaa039;
 }
-
 .text-wrapper {
   display: flex;
   flex-flow: column;

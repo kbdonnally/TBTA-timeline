@@ -1,5 +1,4 @@
 var modal = document.getElementById('myModal'); // container
-var span = document.getElementsByClassName('close')[0];
 
 // populate modal
 // excellent: https://www.kirupa.com/html5/handling_events_for_many_elements.htm
