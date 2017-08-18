@@ -26,13 +26,23 @@ body {
 /* end skeleton ***************************************************************/
 /* sidebar ********************************************************************/
 .sidebar {
-  height: 100vh; /*100%;*/
+  height: 100vh;
   width: 10rem;
-  position: fixed; /* testing */
+  position: fixed;
   right: 0;
   top: 0;
   transition: width .5s;
+  /* container: */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 1fr 1.5rem;
+  grid-template-areas: '.' /* options here */
+                       "small-timeline"
+                       '.';
+  /* visual: */
+  background-color: white;
 }
+/* interactivity: */
 .hide-sidebar {
   width: 0rem;
 }
@@ -80,88 +90,14 @@ body {
 .neg2-rem {
   right: -2rem;
 }
-/* end sidebar ********************************************************************/
-
-.main-margin-right {
-  margin-right: 0!important;
-}
-.main {
-  /* position: relative;
-  margin-right: 0;
-  padding-right: 10rem; */
-  margin-right: 10rem;
-  padding-right: 0;
-  position: static;
-  grid-area: main;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-                       "toggle"
-                       "splash"
-                       "explainer"
-                       "container" /* for entries */
-                       "footer";
-}
-/* .margin {
-  margin-right: 10rem;
-  padding-right: 0;
-  position: static;
-} */
-/* start dummy intro **********************************************************/
-.splash1 {
-  grid-area: splash1;
-  border: 1px solid red;
-  background-color: lightblue;
-  z-index: 30;
-}
-
-.one, .two {
-  margin: 0;
-  height: 100vh;
-}
-/* end dummy intro ************************************************************/
-.splash {
-  grid-area: splash;
-}
-.explainer {
-  grid-area: explainer;
-}
-.container {
-  grid-area: container;
-}
-.footer {
-  grid-area: footer;
-}
-
-/* 2. sidebar *****************************************************************/
-
-/* 2a. skeleton */
-.sidebar {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 2rem 1fr 1.5rem;
-  grid-template-areas: '.' /* add filter here */
-                       "small-timeline"
-                       '.';
-}
-@keyframes sidebarmove {
-  from {display: grid; opacity: 1}
-  to {display: none; opacity: 0}
-}
+/* contents: */
 .small-timeline {
   grid-area: small-timeline;
-}
-.small-timeline {
   display: grid;
   grid-template-rows: 5px repeat(199, auto) 5px; /* do 2 columns -> add years */
   position: relative;
 }
-
-/* 2b. visuals */
-.sidebar {
-  background-color: rgba(255, 255, 255, 1);
-}
-.line {
+.line { /* for small tl */
   z-index: -1;
   position: absolute;
   margin-left: 50%;
@@ -170,7 +106,7 @@ body {
   width: 1px;
   background-color: rgba(0,0,0,.5);
 }
-.admin, .student, .fed, .none { /*dots*/
+.admin, .student, .fed, .none { /* dots */
   height: 5px;
   width: 5px;
   border-radius: 50%;
@@ -207,17 +143,53 @@ body {
 .none {
   background-color: transparent;
 }
+/* end sidebar ****************************************************************/
+/* main ***********************************************************************/
+.main-margin-right {
+  margin-right: 0!important;
+}
+.main {
+  margin-right: 10rem;
+  padding-right: 0;
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+                       "toggle"
+                       "splash"
+                       "explainer"
+                       "container" /* for entries */
+                       "footer";
+}
+
+/* start dummy intro **********************************************************/
+.splash1 {
+  grid-area: splash1;
+  border: 1px solid red;
+  background-color: lightblue;
+  z-index: 30;
+}
+
+.one, .two {
+  margin: 0;
+  height: 100vh;
+}
+/* end dummy intro ************************************************************/
+.splash {
+  grid-area: splash;
+}
+.explainer {
+  grid-area: explainer;
+}
+.container {
+  grid-area: container;
+}
+.footer {
+  grid-area: footer;
+}
 
 /* 3. main ********************************************************************/
 
-/* Table of Contents:
-  a. body......................(default visuals)
-  b. topnav..................(skeleton, visuals)
-  c. splash..................(skeleton, visuals)
-  d. explainer...............(skeleton, visuals)
-  e. entries.................(skeleton, visuals)
-  f. footer...........................(skeleton)
-*/
 
 h1 {
   font-size: 3rem;
