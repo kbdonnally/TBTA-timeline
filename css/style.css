@@ -15,15 +15,186 @@ body {
   font-size: 100%;
 }
 .wrapper {
-  /* grid info: */
   display: grid;
   grid-gap: 0px;
-  grid-auto-flow: column;
-  grid-auto-rows: minmax(1rem, auto);
   grid-template-areas:  "intro"
                         "main";
 }
 /* end skeleton ***************************************************************/
+/* intro **********************************************************************/
+.intro {
+  grid-area: intro;
+}
+/* logo: */
+#homelink {
+  display: block;
+  position: absolute; /* fix inside splash */
+  left: .6rem;
+  top: .4rem;
+  margin: 0;
+  height: 2rem;
+  line-height: 2rem;
+  color: white;
+  opacity: .7;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2rem;
+  text-shadow: 0 0 3px rgba(0,0,0,.5);
+  text-decoration: none;
+}
+#homelink:hover {
+  text-shadow: 0 0 3px rgba(0,0,0,1);
+}
+/* landing page: */
+.splash {
+  position: sticky;
+  top: 0px;
+  z-index: -1;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)),
+  linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url("../img/newspaper-collage-1.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+.splash-grid {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  margin: auto;
+  height: 75%;
+  width: 90%;
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: 1fr 30px 1.5fr;
+  grid-template-areas: "title braces para";
+  align-items: center;
+}
+.splash-title, .splash-braces, .splash-para {
+  color: white;
+  text-shadow: 0 0 3px rgba(0,0,0,.5);
+}
+.splash-title {
+  grid-area: title;
+  color: black;
+  font-size: 3.5rem;
+  line-height: 3rem;
+  font-weight: 300;
+  text-align: right;
+  text-shadow: 0 0 3px rgba(0,0,0,.07);
+}
+.border {
+  background: linear-gradient(to right, rgba(0,0,0,.2), rgba(0,0,0,1) 30%, rgba(0,0,0,1) 90%, rgba(0,0,0,.2));
+  height: 2px;
+  width: 90%;
+  float: right;
+}
+.text {
+  margin: 2rem 0;
+}
+.splash-braces {
+  grid-area: braces;
+}
+.splash-para {
+  grid-area: para;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2rem;
+  text-align: left;
+}
+/* explainer: */
+.explainer {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-areas: "hook        hook  hook"
+                       "reason1 reason2 reason3"
+                       "circle1 circle2 circle3";
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: center;
+  justify-items: center;
+  margin: 0;
+  margin-top: 100vh;
+  padding: 0 1.5rem;
+  height: 100vh;
+  text-align: center;
+  background-image: linear-gradient(rgba(138, 189, 95, .9), rgba(138, 189, 95, .9)), linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("../img/graph-paper.png");
+}
+.hook {
+  grid-area: hook;
+}
+.reason1 {
+  grid-area: reason1;
+}
+.reason2 {
+  grid-area: reason2;
+}
+.reason3 {
+  grid-area: reason3;
+}
+.downarrow {
+  margin: 0 auto;
+  transform: translate(0, 50%);
+  width: 0;
+  height: 0;
+  border-color: white transparent transparent transparent;
+  border-width: 16px;
+  border-style: solid;
+  box-sizing: content-box;
+}
+.circle1 {
+  grid-area: circle1;
+}
+.circle2 {
+  grid-area: circle2;
+}
+.circle3 {
+  grid-area: circle3;
+}
+/* visuals */
+.hook {
+  padding: 0 1rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: white;
+  font-family: 'Roboto Slab', serif;
+}
+.mockdots {
+  height: 12px;
+  width: 12px;
+  margin: auto;
+  padding: 0;
+  background-color: white;
+  border-radius: 50%;
+}
+.reason1, .reason2, .reason3 {
+  color: white;
+  width: 16rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.reason2 {
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+}
+.circle1, .circle2, .circle3 {
+  border-radius: 50%;
+  height: 15rem;
+  width: 15rem; /* 12rem for 768px cutoff */
+  background-color: rgba(255, 255, 255, .3);
+  font-family: 'Roboto Slab', serif;
+  padding: 1rem;
+}
+.circle1 p, .circle2 p, .circle3 p {
+  margin: 0;
+  padding: 0;
+  margin-top: 50%;
+  transform: translate(0%, -50%);
+  color: white;
+  font-size: 1rem;
+}
+/* end intro ******************************************************************/
 /* sidebar ********************************************************************/
 .sidebar {
   height: 100vh;
@@ -150,20 +321,6 @@ body {
   grid-area: main;
 }
 /* end main *******************************************************************/
-/* start dummy intro **********************************************************/
-.splash1 {
-  grid-area: splash1;
-  border: 1px solid red;
-  background-color: lightblue;
-  z-index: 30;
-}
-.one, .two {
-  margin: 0;
-  height: 100vh;
-}
-/* end dummy intro ************************************************************/
-
-
 /* entries ********************************************************************/
 /* layout: */
 .container {

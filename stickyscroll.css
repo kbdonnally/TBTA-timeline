@@ -21,14 +21,11 @@ body {
 }
 .intro {
   grid-area: intro;
-  /*background-color: white; missed spot on collage, sidebar shows - fix! */
 }
 .main {
   grid-area: main;
 }
-
-/* 1. intro **********************************************************************/
-/* 1a. logo */
+/* logo: */
 #homelink {
   visibility: hidden; /* 8/16 */
   display: block;
@@ -48,8 +45,7 @@ body {
 #homelink:hover {
   text-shadow: 0 0 3px rgba(0,0,0,1);
 }
-
-/* 1b. splash page */
+/* landing page: */
 .splash {
   position: sticky;
   top: 0px;
@@ -106,9 +102,7 @@ body {
   font-family: 'Permanent Marker', cursive;
   text-align: left;
 }
-
-/* 1d. explainer */
-/* skeleton */
+/* explainer: */
 .explainer {
   position: relative;
   z-index: 1;
