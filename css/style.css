@@ -48,7 +48,7 @@ body {
 .splash {
   position: sticky;
   top: 0px;
-  z-index: -1;
+  z-index: 1;
   height: 100vh;
   width: 100%;
   background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)),
@@ -105,7 +105,7 @@ body {
 /* explainer: */
 .explainer {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: grid;
   grid-template-areas: "hook        hook  hook"
                        "reason1 reason2 reason3"
@@ -197,6 +197,7 @@ body {
 /* end intro ******************************************************************/
 /* sidebar ********************************************************************/
 .sidebar {
+  z-index: 0;
   height: 100vh;
   width: 10rem;
   position: fixed;
@@ -574,7 +575,7 @@ p[class="dots"]:nth-of-type(3), p[class="dots"]:nth-last-of-type(3) {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 3;
   padding-top: 4rem;
   left: 0;
   top: 0;
