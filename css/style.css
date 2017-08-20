@@ -28,7 +28,7 @@ body {
 /* logo: */
 #homelink {
   display: block;
-  position: absolute; /* fix inside splash */
+  position: absolute;
   left: .6rem;
   top: .4rem;
   margin: 0;
@@ -53,7 +53,7 @@ body {
   height: 100vh;
   width: 100%;
   background-image: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)),
-  linear-gradient(rgba(55, 0, 55, .5), rgba(55, 0, 55, .5)), url("../img/newspaper-collage-1.png");
+  linear-gradient(rgba(55, 0, 55, .6), rgba(55, 0, 55, .6)), url("../img/newspaper-collage-1.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -83,7 +83,7 @@ body {
   line-height: 3rem;
   font-weight: 300;
   text-align: right;
-  text-shadow: 0 0 3px rgba(0,0,0,.07);
+  text-shadow: 0 0 3px rgba(0,0,0,.2);
 }
 .border {
   background: linear-gradient(to right, rgba(0,0,0,.2), rgba(0,0,0,1) 30%, rgba(0,0,0,1) 90%, rgba(0,0,0,.2));
@@ -102,6 +102,28 @@ body {
   font-family: 'Permanent Marker', cursive;
   font-size: 2rem;
   text-align: left;
+}
+.splash-btn { /* add shine animation */
+  cursor: pointer;
+  transform: rotate(90deg);
+  float: right;
+  position: relative;
+  right: 5vw;
+  top: 10vh;
+  margin: 0;
+  padding-bottom: 4px; /* centers char */
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 0 2px 2px rgba(0,0,0,.1);
+  outline: none;
+  border: none;
+}
+.splash-btn:hover {
+  box-shadow: 0 0 2px 2px rgba(0,0,0,.5);
 }
 /* explainer: */
 .explainer {
