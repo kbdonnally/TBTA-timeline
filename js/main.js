@@ -111,3 +111,13 @@ https://developers.google.com/web/updates/2016/04/intersectionobserver */
     main.classList.toggle('main-margin-right');
   });
 }()); // end sidebar
+
+// splash button
+(function() {
+  var btn = document.getElementsByClassName('splash-btn')[0];
+  var explain = document.getElementsByClassName('explainer')[0];
+
+  btn.addEventListener('click', function() {
+    alert(explain.getBoundingClientRect().top);
+  })
+}());

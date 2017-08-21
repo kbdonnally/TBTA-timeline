@@ -112,22 +112,24 @@ body {
   top: 10vh;
   margin: 0;
   padding-bottom: 4px; /* centers char */
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   font-size: 2rem;
   text-align: center;
-  background-color: white;
+  background-color: rgba(255,255,255,.7);
   box-shadow: 0 0 2px 2px rgba(0,0,0,.1);
   outline: none;
   border: none;
 }
 .splash-btn:hover {
+  background-color: white;
   box-shadow: 0 0 2px 2px rgba(0,0,0,.5);
 }
 /* explainer: */
 .explainer {
   position: relative;
+  top: -100vh;
   z-index: 2;
   display: grid;
   grid-template-areas: "hook        hook  hook"
