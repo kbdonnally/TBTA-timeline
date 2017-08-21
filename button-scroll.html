@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300|Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <style> /* CSS */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Roboto Slab", serif;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+  }
+  .intro {
+  }
+  .splash, .explainer, .sidebar {
+    height: 100vh;
+  }
+  .splash {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: mistyrose;
+  }
+  .explainer {
+    position: relative;
+    z-index: 2;
+    background-color: #bae093;
+    transition: margin 2s ease;
+  }
+  .explain-scroll {
+    margin-top: -100vh;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    width: 10rem;
+    padding-top: 30vh;
+    background-color: palegoldenrod;
+  }
+  .main {
+    margin-right: 10rem;
+    background-color: lavender;
+    height: 400vh;
+  }
+  .content {
+    line-height: 12rem;
+  }
+  </style>
+  <title>Button-Scroll</title>
+</head>
+<body> <!-- HTML -->
+
+  <div class="intro">
+    <div class="splash">
+      <div>SPLASH</div>
+      <button id="splash-btn">CLICK</button>
+    </div>
+    <div class="explainer">
+      <div>EXPLAINER</div>
+      <button id="explain-btn">CLICK</button>
+    </div>
+  </div>
+  <div class="main">
+    <div class="sidebar">SIDE-BAR</div>
+    <div class="content">CONTENT</div>
+    <div class="content">CONTENT</div>
+    <div class="content">CONTENT</div>
+    <div class="content">CONTENT</div>
+  </div>
+
+<script> // Javascript //
+(function() {
+  var btn = document.getElementById('splash-btn');
+  var btnUp = document.getElementById('explain-btn');
+  var explain = document.getElementsByClassName('explainer')[0];
+
+  btn.addEventListener('click', function() {
+    explain.classList.add('explain-scroll');
+  });
+  btnUp.addEventListener('click', function() {
+    explain.classList.remove('explain-scroll');
+  });
+}());
+</script>
+</body>
+</html>

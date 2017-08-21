@@ -108,12 +108,12 @@ body {
   transform: rotate(90deg);
   float: right;
   position: relative;
-  right: 5vw;
-  top: 10vh;
+  right: 10vw;
+  top: 5vh;
   margin: 0;
   padding-bottom: 4px; /* centers char */
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 50%;
   font-size: 2rem;
   text-align: center;
@@ -124,12 +124,13 @@ body {
 }
 .splash-btn:hover {
   background-color: white;
-  box-shadow: 0 0 2px 2px rgba(0,0,0,.5);
+  box-shadow: 0 0 3px 2px rgba(0,0,0,.3);
 }
+
 /* explainer: */
 .explainer {
+  transition: margin-top 2s ease; /* see 'explain-scroll' */
   position: relative;
-  top: -100vh;
   z-index: 2;
   display: grid;
   grid-template-areas: "hook        hook  hook"
@@ -139,11 +140,15 @@ body {
   align-content: center;
   justify-items: center;
   margin: 0;
-  margin-top: 100vh;
+  margin-top: 0;
   padding: 0 1.5rem;
   height: 100vh;
   text-align: center;
   background-image: linear-gradient(rgba(138, 189, 95, .9), rgba(138, 189, 95, .9)), linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5)), url("../img/graph-paper.png");
+  box-shadow: 0 0 5px 1px rgba(0,0,0,.1);
+}
+.explain-scroll { /* if click btn */
+  margin-top: -100vh;
 }
 .hook {
   grid-area: hook;
@@ -360,7 +365,7 @@ body {
 }
 @media screen and (min-width: 900px) {
   .container {
-    background-image: linear-gradient(to right, #6f256f -40%, rgba(255, 255, 255, 0), #6f256f 140%);
+    background-image: linear-gradient(to right, #6f256f -100%, rgba(255, 255, 255, 0), #6f256f 200%);
   }
 }
 .entry {

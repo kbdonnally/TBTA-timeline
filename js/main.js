@@ -115,9 +115,14 @@ https://developers.google.com/web/updates/2016/04/intersectionobserver */
 // splash button
 (function() {
   var btn = document.getElementsByClassName('splash-btn')[0];
+//  var btnUp = document.getElementById('explain-btn');
   var explain = document.getElementsByClassName('explainer')[0];
 
   btn.addEventListener('click', function() {
-    alert(explain.getBoundingClientRect().top);
-  })
+    //explain.classList.add('explain-scroll');
+    explain.scrollIntoView();
+  });
+/*  btnUp.addEventListener('click', function() {
+    explain.classList.remove('explain-scroll');
+  }); */
 }());
